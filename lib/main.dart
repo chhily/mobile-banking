@@ -4,11 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_practice/bottom_nav/bottom_nav.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -38,14 +33,14 @@ class MyApp extends StatelessWidget {
             secondary: AppColor.secondary,
             background: AppColor.secondary,
             surfaceTint: AppColor.white),
-        // actionIconTheme: ActionIconThemeData(
-        //   closeButtonIconBuilder: (context) {
-        //     return const Icon(Icons.close_outlined);
-        //   },
-        //   backButtonIconBuilder: (context) {
-        //     return const Icon(Icons.arrow_back_ios);
-        //   },
-        // ),
+        actionIconTheme: ActionIconThemeData(
+          closeButtonIconBuilder: (context) {
+            return const Icon(Icons.close_outlined);
+          },
+          backButtonIconBuilder: (context) {
+            return const Icon(Icons.arrow_back_ios);
+          },
+        ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColor.backgroundPrimary,
           elevation: 0,

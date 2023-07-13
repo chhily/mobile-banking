@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_practice/constant/app_space.dart';
-import 'package:ui_practice/util/ui_helper.dart';
+import 'package:ui_practice/bottom_nav/widget/navigation_bar.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
@@ -14,33 +13,13 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        animationDuration: const Duration(seconds: 1),
-        
-        onDestinationSelected: (int index) {
+      bottomNavigationBar: NavigationBarWidget(
+        selectedIndex: currentPageIndex,
+        onDestinationSelected: (newIndex) {
           setState(() {
-            currentPageIndex = index;
+            currentPageIndex = newIndex;
           });
         },
-        selectedIndex: currentPageIndex,
-        destinations:  <Widget>[
-          NavigationDestination(
-            icon: const Icon(Icons.home),
-            selectedIcon: buildNavBarIcon(icon: Icons.home, text: 'Home'),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.store),
-            selectedIcon: buildNavBarIcon(icon: Icons.store, text: 'Stores'),
-            label: 'Stores',
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.list_alt_outlined),
-            selectedIcon: buildNavBarIcon(icon: Icons.list, text: 'Order'),
-            label: 'Order',
-          ),
-        ],
       ),
       body: <Widget>[
         Container(
@@ -59,17 +38,6 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
           child: const Text('Page 3'),
         ),
       ][currentPageIndex],
-    );
-  }
-
-  Widget buildNavBarIcon({required IconData icon, required String text}) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon),
-        WidthAppSpace.smallSpace,
-        UIHelper.textHelper(text: text)
-      ],
     );
   }
 }
