@@ -1,48 +1,74 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/util/ui_helper.dart';
-
 
 class NavigationBarWidget extends StatelessWidget {
   final void Function(int)? onDestinationSelected;
   final int selectedIndex;
-  const NavigationBarWidget({super.key, this.onDestinationSelected, required this.selectedIndex});
+  const NavigationBarWidget(
+      {super.key, this.onDestinationSelected, required this.selectedIndex});
 
   @override
   Widget build(BuildContext context) {
     return NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        animationDuration: const Duration(seconds: 1),
-        
-        onDestinationSelected: onDestinationSelected,
-        selectedIndex: selectedIndex,
-        destinations:  <Widget>[
-          NavigationDestination(
-            icon: const Icon(Icons.home),
-            selectedIcon: buildNavBarIcon(icon: Icons.home, text: 'Home'),
-            label: 'Home',
+      onDestinationSelected: onDestinationSelected,
+      selectedIndex: selectedIndex,
+      destinations: <Widget>[
+        const NavigationDestination(
+          icon: Icon(
+            Icons.account_balance_outlined,
           ),
-          NavigationDestination(
-            icon: const Icon(Icons.store),
-            selectedIcon: buildNavBarIcon(icon: Icons.store, text: 'Stores'),
-            label: 'Stores',
+          selectedIcon: Icon(
+            Icons.account_balance_rounded,
+            color: AppColor.backgroundPrimary,
           ),
-          NavigationDestination(
-            icon: const Icon(Icons.list_alt_outlined),
-            selectedIcon: buildNavBarIcon(icon: Icons.list, text: 'Order'),
-            label: 'Order',
+          label: '.',
+        ),
+        const NavigationDestination(
+          icon: Icon(
+            CupertinoIcons.chart_pie,
           ),
-        ],
-      );
-  }
-
-  Widget buildNavBarIcon({required IconData icon, required String text}) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon),
-        WidthAppSpace.smallSpace,
-        UIHelper.textHelper(text: text)
+          selectedIcon: Icon(
+            CupertinoIcons.chart_pie_fill,
+            color: AppColor.backgroundPrimary,
+          ),
+          label: '.',
+        ),
+        NavigationDestination(
+          icon: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: AppColor.secondary),
+            padding: const EdgeInsets.all(10),
+            child: const Icon(
+              Icons.filter_center_focus_rounded,
+              color: AppColor.backgroundPrimary,
+            ),
+          ),
+          label: '.',
+        ),
+        const NavigationDestination(
+          icon: Icon(
+            CupertinoIcons.chat_bubble,
+          ),
+          label: '.',
+          selectedIcon: Icon(
+            CupertinoIcons.chat_bubble_fill,
+            color: AppColor.backgroundPrimary,
+          ),
+        ),
+        const NavigationDestination(
+          icon: Icon(
+            CupertinoIcons.person,
+          ),
+          label: '.',
+          selectedIcon: Icon(
+            CupertinoIcons.person_fill,
+            color: AppColor.backgroundPrimary,
+          ),
+        ),
       ],
     );
   }

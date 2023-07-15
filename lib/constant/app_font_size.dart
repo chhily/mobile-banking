@@ -8,6 +8,8 @@ class FontSize {
   static const double fontSizeMedium = 10;
   static const double fontSizeRegular = 12;
   static const double fontSizeBigRegular = 14;
-  static const double fontSizeBig = 16; 
-  static const double fontSizeHuge = 18; 
+  static const double fontSizeTitle = 16;
+  static const double fontSizeHuge = 18;
+
+  static const double fontSizeSuperHuge = 24;
 }

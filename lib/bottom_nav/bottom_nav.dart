@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_practice/bottom_nav/widget/navigation_bar.dart';
+import 'package:ui_practice/view/home/home.dart';
 
 class MyBottomNavigation extends StatefulWidget {
   const MyBottomNavigation({super.key});
@@ -22,11 +23,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
         },
       ),
       body: <Widget>[
-        Container(
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: const Text('Page 1'),
-        ),
+        MyAppHomePage(),
         Container(
           color: Colors.green,
           alignment: Alignment.center,
@@ -36,6 +33,16 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
           color: Colors.blue,
           alignment: Alignment.center,
           child: const Text('Page 3'),
+        ),
+        Container(
+          color: Colors.yellow,
+          alignment: Alignment.center,
+          child: const Text('Page 4'),
+        ),
+        Container(
+          color: Colors.pink,
+          alignment: Alignment.center,
+          child: const Text('Page 5'),
         ),
       ][currentPageIndex],
     );
