@@ -10,9 +10,12 @@ This is a Flutter application that uses Material 3 to create a bank application 
 * intl: ^0.17.0
 * cached_network_image: ^3.2.0
 
+### Font 
+  * QuickSand (EngLish)
+
 # Screenshot:
 
-<div style="display: flex;">
-  <img src="home.png" style="width: 50%; margin: 10px;">
-  <img src="transfer.png" style="width: 50%; margin: 10px;">
+<div style="text-align:center; width: 100%;">
+  <img src="assets/images/home.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/transfer.jpg" width="300" height="auto" align="center">
 </div>
