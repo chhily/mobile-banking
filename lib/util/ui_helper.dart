@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_practice/config/app_config/app_config.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
+import 'package:ui_practice/constant/app_space.dart';
 
 class UIHelper {
   static Text textHelper(
@@ -26,15 +27,19 @@ class UIHelper {
       Color? textColor,
       MainAxisAlignment? mainAxisAlignment,
       Color? iconColor,
-      IconData? currencyIcon}) {
+      String? currencySymbol}) {
     return Row(
       mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(currencyIcon,
-            color: iconColor ?? AppColor.white,
-            size: textSize ?? FontSize.fontSizeRegular),
+        textHelper(
+          text: currencySymbol ?? "N/A",
+          textColor: iconColor,
+          textSize: textSize ?? FontSize.fontSizeRegular,
+          fontWeight: fontWeight ?? FontWeight.normal,
+        ),
+        HorizontalSpace.smallSpace,
         Text(
           AppFormatter.priceFormatter(price),
           style: GoogleFonts.quicksand(
@@ -68,7 +73,8 @@ class UIHelper {
       child: childWidget ?? const Placeholder(),
     );
   }
-  static Widget verticalDivider () {
+
+  static Widget verticalDivider() {
     return Container(
       width: 2,
       height: 40,

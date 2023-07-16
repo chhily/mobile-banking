@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_practice/constant/app_color.dart';
-import 'package:ui_practice/constant/app_space.dart';
-import 'package:ui_practice/util/ui_helper.dart';
 
 class NavigationBarWidget extends StatelessWidget {
   final void Function(int)? onDestinationSelected;

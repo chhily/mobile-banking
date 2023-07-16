@@ -23,7 +23,7 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
         },
       ),
       body: <Widget>[
-        MyAppHomePage(),
+        const MyAppHomePage(),
         Container(
           color: Colors.green,
           alignment: Alignment.center,
