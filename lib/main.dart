@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
           closeButtonIconBuilder: (context) {
             return const Icon(Icons.close_outlined);
           },
-          backButtonIconBuilder: (context) {
-            return const Icon(Icons.arrow_back_ios);
-          },
+          // backButtonIconBuilder: (context) {
+          //   return const Icon(Icons.arrow_back_ios);
+          // },
         ),
         navigationBarTheme: NavigationBarThemeData(
             backgroundColor: AppColor.white,

@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_practice/config/app_config/app_config.dart';
@@ -14,6 +16,7 @@ class UIHelper {
     return Text(
       text,
       style: GoogleFonts.quicksand(
+          height: 0,
           fontSize: textSize ?? FontSize.fontSizeRegular,
           fontWeight: fontWeight ?? FontWeight.normal,
           color: textColor),
@@ -43,6 +46,7 @@ class UIHelper {
         Text(
           AppFormatter.priceFormatter(price),
           style: GoogleFonts.quicksand(
+              height: 0,
               fontSize: textSize ?? FontSize.fontSizeRegular,
               fontWeight: fontWeight ?? FontWeight.normal,
               color: textColor),
@@ -82,30 +86,35 @@ class UIHelper {
     );
   }
 
-  static TextFormField textFormFieldHelper(
-      {String? labelText, Widget? suffixIcon}) {
+  static TextFormField textFormFieldHelper({
+    String? labelText,
+    Widget? suffixIcon,
+    Color? fillColor,
+    Color? enableColor,
+    Color? textColor,
+  }) {
     return TextFormField(
-      style: const TextStyle(color: AppColor.white),
+      style: GoogleFonts.quicksand(
+          color: textColor, fontSize: FontSize.fontSizeRegular),
       keyboardType: TextInputType.text,
-      cursorColor: AppColor.white,
+      cursorColor: textColor ?? AppColor.white,
       decoration: InputDecoration(
-        label: textHelper(
-          text: labelText ?? '',
-        ),
+        label: textHelper(text: labelText ?? '', textColor: textColor),
         suffixIcon: suffixIcon,
         contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
         ),
         filled: true,
-        fillColor: AppColor.backgroundPrimary.withOpacity(0.2),
+        fillColor: fillColor ?? AppColor.backgroundPrimary.withOpacity(0.2),
         focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(25)),
           borderSide: BorderSide(width: 1, color: AppColor.primaryColor),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(25)),
-          borderSide: BorderSide(width: 0.5, color: AppColor.white),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
+          borderSide:
+              BorderSide(width: 0.5, color: enableColor ?? AppColor.white),
         ),
       ),
     );
@@ -126,5 +135,45 @@ class UIHelper {
           maxChildSize: maxChildSize ?? 0.8,
           builder: builder,
         ));
+  }
+
+  static imageAvatarHelper(String imageUrl) {
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      width: 50,
+      height: 50,
+      imageBuilder: (context, imageProvider) {
+        return CircleAvatar(
+          backgroundColor: AppColor.backgroundInfo,
+          backgroundImage: imageProvider,
+        );
+      },
+      placeholder: (context, url) {
+        return const Center(
+          child: SizedBox(
+            height: 12,
+            width: 12,
+            child: CircularProgressIndicator.adaptive(
+              valueColor: AlwaysStoppedAnimation<Color>(AppColor.primaryColor),
+              strokeWidth: 1,
+            ),
+          ),
+        );
+      },
+      errorWidget: (context, url, error) {
+        return CircleAvatar(
+          backgroundColor: AppColor.backgroundInfo,
+          child: Image.network(
+            url,
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(
+                CupertinoIcons.person,
+                color: AppColor.secondary,
+              );
+            },
+          ),
+        );
+      },
+    );
   }
 }

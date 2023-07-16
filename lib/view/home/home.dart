@@ -1,33 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ui_practice/config/app_config/app_config.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
-import 'package:ui_practice/model/user_model.dart';
 import 'package:ui_practice/util/ui_helper.dart';
+import 'package:ui_practice/view/home/widget/send_page.dart';
+import 'package:ui_practice/view/home/widget/summary_account.dart';
 
-class MyAppHomePage extends StatefulWidget {
+class MyAppHomePage extends StatelessWidget {
   const MyAppHomePage({super.key});
-
-  @override
-  State<MyAppHomePage> createState() => _MyAppHomePageState();
-}
-
-class _MyAppHomePageState extends State<MyAppHomePage> {
-  UserModel? userModel;
-
-  @override
-  void initState() {
-    super.initState();
-    // TODO: implement initState
-    userModel = UserModel(
-      totalAmount: AppData.currencies[0]['amount'],
-      currencyValue: AppData.currencies[0]['name'],
-      currencySymbol: AppData.currencies[0]['symbol'],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,35 +30,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     _searchWidget(),
-                    VerticalSpace.regularSpace,
-                    _currencyDropDown(),
-                    UIHelper.currencyTextHelper(
-                        price: userModel?.totalAmount ?? 0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        currencySymbol: userModel?.currencySymbol,
-                        iconColor: AppColor.white,
-                        textSize: FontSize.fontSizeSuperHuge,
-                        fontWeight: FontWeight.bold,
-                        textColor: AppColor.white),
-                    VerticalSpace.smallSpace,
-                    UIHelper.textHelper(
-                        text: "Available Balance", textColor: AppColor.white),
-                    VerticalSpace.regularSpace,
-                    OutlinedButton(
-                        onPressed: () {},
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              CupertinoIcons.creditcard,
-                              color: AppColor.white,
-                              size: 16,
-                            ),
-                            HorizontalSpace.smallSpace,
-                            UIHelper.textHelper(
-                                text: "Add Money", textColor: AppColor.white),
-                          ],
-                        )),
+                    const AccountSummary(),
                   ],
                 ),
               ),
@@ -92,92 +46,23 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
           ],
         ),
         Positioned(
-            top: MediaQuery.of(context).size.height * 0.35,
-            child: _summaryCard()),
+          top: MediaQuery.of(context).size.height * 0.35,
+          child: _summaryCard(
+            onSendTransaction: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const SendPage();
+                  },
+                ),
+              );
+            },
+            onRequestTransaction: () {},
+            onUtilityTransaction: () {},
+          ),
+        ),
       ],
-    );
-  }
-
-  Widget _currencyDropDown() {
-    return InkWell(
-      onTap: () {
-        showModalBottomSheet(
-          context: context,
-          backgroundColor: Colors.transparent,
-          isScrollControlled: true,
-          builder: (BuildContext context) {
-            return UIHelper.draggableBottomSheet(
-              minChildSize: 0.3,
-              initialChildSize: 0.3,
-              context: context,
-              builder: (context, scrollController) {
-                return Stack(
-                  alignment: Alignment.topCenter,
-                  fit: StackFit.loose,
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                          color: AppColor.white,
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(16))),
-                      child: ListView.builder(
-                        controller: scrollController,
-                        itemCount: AppData.currencies.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          final currencyData =
-                              AppData.currencies.elementAt(index);
-                          return ListTile(
-                            title:
-                                UIHelper.textHelper(text: currencyData['name']),
-                            onTap: () {
-                              if (currencyData.isEmpty) {
-                                return;
-                              } else {
-                                setState(() {
-                                  // Update the selected currency.
-                                  userModel = UserModel(
-                                    totalAmount: currencyData['amount'],
-                                    currencyValue: currencyData['name'],
-                                    currencySymbol: currencyData['symbol'],
-                                  );
-                                });
-                              }
-                              // Close the bottom sheet.
-                              Navigator.pop(context);
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    Container(
-                      width: 80,
-                      height: 12,
-                      decoration: BoxDecoration(
-                          color: AppColor.secondary,
-                          borderRadius: AppBorderRadius.circularBorderRadius),
-                    )
-                  ],
-                );
-              },
-            );
-          },
-        );
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          UIHelper.textHelper(
-              text: userModel?.currencyValue ?? 'N/A',
-              fontWeight: FontWeight.bold,
-              textColor: Colors.white,
-              textSize: FontSize.fontSizeBigRegular),
-          HorizontalSpace.smallSpace,
-          const Icon(CupertinoIcons.arrow_2_circlepath_circle,
-              size: 14, color: Colors.white),
-        ],
-      ),
     );
   }
 
@@ -263,6 +148,8 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
                                 price: transactionData['amount'],
                                 iconColor: AppColor.transactionColor(
                                     transactionData['category']),
+                                textColor: AppColor.transactionColor(
+                                    transactionData['category']),
                                 currencySymbol: transactionData['currency'],
                                 textSize: FontSize.fontSizeBigRegular),
                             HorizontalSpace.smallSpace,
@@ -281,7 +168,10 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
     );
   }
 
-  Widget _summaryCard() {
+  Widget _summaryCard(
+      {void Function()? onSendTransaction,
+      void Function()? onRequestTransaction,
+      void Function()? onUtilityTransaction}) {
     return Card(
       elevation: 0,
       color: AppColor.white,
@@ -290,7 +180,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
-            onPressed: () {},
+            onPressed: onSendTransaction,
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints.tightFor(),
             icon: Padding(
@@ -308,7 +198,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
           ),
           UIHelper.verticalDivider(),
           IconButton(
-            onPressed: () {},
+            onPressed: onRequestTransaction,
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints.tightFor(),
             icon: Padding(
@@ -326,7 +216,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
           ),
           UIHelper.verticalDivider(),
           IconButton(
-            onPressed: () {},
+            onPressed: onUtilityTransaction,
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints.tightFor(),
             icon: Padding(
@@ -337,7 +227,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
                   const Icon(Icons.account_balance_rounded,
                       size: 32, color: AppColor.warnColor),
                   VerticalSpace.smallSpace,
-                  UIHelper.textHelper(text: "Bank")
+                  UIHelper.textHelper(text: "Utility")
                 ],
               ),
             ),

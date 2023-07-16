@@ -15,6 +15,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.1
   intl: ^0.18.1
+  cached_network_image: ^3.2.3
 
 
 flutter_native_splash:

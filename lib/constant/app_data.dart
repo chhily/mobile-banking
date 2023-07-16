@@ -85,4 +85,71 @@ class AppData {
       'currency': "USD"
     },
   ];
+
+  static List<Map<String, dynamic>> transferData = [
+    {
+      'receiver_name': 'HI Doe',
+      'currency': 'USD',
+      'receiver_email': 'janedoe@example.com',
+      'receiver_money': 10000,
+      'receiver_image': "https://i.pravatar.cc/150?img=3",
+      'indicate_status': "Completed"
+    },
+    {
+      'receiver_name': 'Java isHard',
+      'currency': 'Riel',
+      'receiver_email': 'java@example.com',
+      'receiver_money': 123663300,
+      'receiver_image': "https://i.pravatar.cc/150?img=5",
+      'indicate_status': "Pending"
+    },
+    {
+      'receiver_name': 'Hello World',
+      'currency': 'CUD',
+      'receiver_email': 'helloworld@example.com',
+      'receiver_money': 34546,
+      'receiver_image': "https://i.pravatar.cc/150?img=4",
+      'indicate_status': "Failed"
+    },
+    {
+      'receiver_name': 'Bi yao',
+      'currency': '€',
+      'receiver_email': 'biyao@example.com',
+      'receiver_money': 43523.4,
+      'receiver_image': "https://i.pravatar.cc/150?img=3",
+      'indicate_status': "Failed"
+    },
+    {
+      'receiver_name': 'Naruto Uzumaki',
+      'currency': '¥',
+      'receiver_email': 'naruto@example.com',
+      'receiver_money': 234.32,
+      'receiver_image': "https://i.pravatar.cc/150?img=1",
+      'indicate_status': "Failed"
+    },
+    {
+      'receiver_name': 'Jane Doe',
+      'currency': '¥',
+      'receiver_email': 'janedoe@example.com',
+      'receiver_money': 1321,
+      'receiver_image': "https://i.pravatar.cc/150?img=55",
+      'indicate_status': "Completed"
+    },
+    {
+      'receiver_name': 'Jona Hello',
+      'currency': 'BRL',
+      'receiver_email': 'jona@example.com',
+      'receiver_money': 543543,
+      'receiver_image': "https://i.pravatar.cc/150?img=32",
+      'indicate_status': "Completed"
+    },
+    {
+      'receiver_name': 'Thida Kim',
+      'currency': 'Riel',
+      'receiver_email': 'thida@example.com',
+      'receiver_money': 32445,
+      'receiver_image': "https://i.pravatar.cc/150?img=28",
+      'indicate_status': "Completed"
+    }
+  ];
 }
