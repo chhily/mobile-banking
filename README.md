@@ -1,14 +1,14 @@
 # About Project
-An bank application UI for education purpose  only
-Flutter using Material 3 
-lastest flutter version 
-Used Packet : 
- cupertino_icons: lasest 
-  google_fonts: lasest
-  flutter_launcher_icons: lasest
-  flutter_native_splash: lasest
-  intl: lasest
-  cached_network_image: lasest
+This is a Flutter application that uses Material 3 to create a bank application UI.
+
+## Used Packages
+
+* cupertino_icons: ^1.0.2
+* google_fonts: ^2.2.0
+* flutter_launcher_icons: ^0.9.2
+* flutter_native_splash: ^1.3.2
+* intl: ^0.17.0
+* cached_network_image: ^3.2.0
 
 # Screenshot:
 
