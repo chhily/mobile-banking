@@ -46,6 +46,7 @@ class RecentTransferWidget extends StatelessWidget {
             ),
             Expanded(
                 child: _buildRecentTransferList(transferData: transferData)),
+            VerticalSpace.smallSpace,
           ],
         ));
   }
@@ -77,8 +78,10 @@ class RecentTransferWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         UIHelper.textHelper(text: transferValue.receiverName),
+                        VerticalSpace.smallSpace,
                         UIHelper.textHelper(
-                            text: transferValue.receiverEmail,
+                            text: transferValue.bankNumber ?? 'N/A',
+                            fontWeight: FontWeight.bold,
                             textSize: FontSize.fontSizeMedium),
                       ],
                     ),

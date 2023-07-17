@@ -99,10 +99,10 @@ class _AccountSummaryState extends State<AccountSummary> {
                               BorderRadius.vertical(top: Radius.circular(16))),
                       child: ListView.builder(
                         controller: scrollController,
-                        itemCount: AppData.currencies.length,
+                        itemCount: AppData.userBankAccount.length,
                         itemBuilder: (BuildContext context, int index) {
                           final currencyData =
-                              AppData.currencies.elementAt(index);
+                              AppData.userBankAccount.elementAt(index);
                           return ListTile(
                             title: UIHelper.textHelper(
                                 text: currencyData['currency_name']),

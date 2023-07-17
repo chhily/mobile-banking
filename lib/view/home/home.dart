@@ -7,6 +7,7 @@ import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/util/ui_helper.dart';
 import 'package:ui_practice/view/home/widget/summary_account.dart';
+import 'package:ui_practice/view/home/widget/transaction_widget.dart';
 import 'package:ui_practice/view/transfer_page/transfer_page.dart';
 
 class MyAppHomePage extends StatelessWidget {
@@ -114,60 +115,7 @@ class MyAppHomePage extends StatelessWidget {
         ),
         Expanded(
           child: UIHelper.cardHelper(
-            childWidget: ListView.separated(
-              separatorBuilder: (context, index) => Divider(
-                  thickness: 1, color: AppColor.secondary.withOpacity(0.1)),
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
-              itemCount: AppData.transactions.length,
-              itemBuilder: (context, index) {
-                final transactionData = AppData.transactions.elementAt(index);
-                return InkWell(
-                  onTap: () {},
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: AppColor.transactionColor(
-                                      transactionData['category'])
-                                  .withOpacity(0.1),
-                              child: Icon(transactionData['icon'],
-                                  color: AppColor.transactionColor(
-                                      transactionData['category'])),
-                            ),
-                            HorizontalSpace.regularSpace,
-                            UIHelper.textHelper(
-                              text: transactionData['category'],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            UIHelper.currencyTextHelper(
-                                price: transactionData['amount'],
-                                iconColor: AppColor.transactionColor(
-                                    transactionData['category']),
-                                textColor: AppColor.transactionColor(
-                                    transactionData['category']),
-                                currencySymbol: transactionData['currency'],
-                                textSize: FontSize.fontSizeBigRegular),
-                            HorizontalSpace.smallSpace,
-                            const Icon(Icons.arrow_forward_ios, size: 12)
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
+            childWidget: const TransactionWidget(),
           ),
         )
       ],
@@ -197,7 +145,7 @@ class MyAppHomePage extends StatelessWidget {
                   const Icon(CupertinoIcons.money_dollar_circle_fill,
                       size: 32, color: AppColor.secondary),
                   VerticalSpace.smallSpace,
-                  UIHelper.textHelper(text: "Transfer")
+                  UIHelper.textHelper(text: "History")
                 ],
               ),
             ),

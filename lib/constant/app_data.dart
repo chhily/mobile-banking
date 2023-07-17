@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppData {
-  static const List<Map<String, dynamic>> currencies = [
+  static const List<Map<String, dynamic>> userBankAccount = [
     {
       'currency_name': "Khmer Riel",
       "symbol": "Riel",
@@ -54,6 +54,61 @@ class AppData {
       'amount': 888.123,
     },
   ];
+
+  static const listOfUserBankAccount = {
+    "bank_info" : [
+      {
+        'currency_name': "Khmer Riel",
+        "symbol": "Riel",
+        'amount': 43287400,
+      },
+      {
+        'currency_name': "US Dollar",
+        "symbol": "USD",
+        'amount': 10000,
+      },
+      {
+        'currency_name': "Euro",
+        "symbol": "€",
+        'amount': 59.89,
+      },
+      {
+        'currency_name': "British Pound",
+        "symbol": "£",
+        'amount': 52139.89,
+      },
+      {
+        'currency_name': "Japanese Yen",
+        "symbol": "¥",
+        'amount': 9456831.55,
+      },
+      {
+        'currency_name': "Chinese Yuan",
+        "symbol": "¥",
+        'amount': 12345.55,
+      },
+      {
+        'currency_name': "Indian Rupee",
+        "symbol": "Rs.",
+        'amount': 0.55,
+      },
+      {
+        'currency_name': "Brazilian Real",
+        "symbol": "BRL",
+        'amount': 445.14,
+      },
+      {
+        'currency_name': "Australian Dollar",
+        "symbol": "AUD",
+        'amount': 456,
+      },
+      {
+        'currency_name': "Canadian Dollar",
+        "symbol": "CUD",
+        'amount': 888.123,
+      },
+    ]
+  };
 
   static const Map<String, dynamic> userInfo = {
     'bank_number': "001 125 913",
@@ -166,6 +221,24 @@ class AppData {
       'receiver_image': "https://i.pravatar.cc/150?img=44",
       'indicate_status': "Completed",
       'receiver_bank': "767 322 324",
+    },
+    {
+      'receiver_name': 'Chan Thou',
+      'currency': 'Riel',
+      'receiver_email': 'chanthou@example.com',
+      'receiver_money': 134242545,
+      'receiver_image': "https://i.pravatar.cc/150?img=21",
+      'indicate_status': "Completed",
+      'receiver_bank': "324 111 221",
+    },
+    {
+      'receiver_name': 'Kim Heng',
+      'currency': 'USD',
+      'receiver_email': 'kimheng1202@example.com',
+      'receiver_money': 5000,
+      'receiver_image': "https://i.pravatar.cc/150?img=52",
+      'indicate_status': "Completed",
+      'receiver_bank': "077 500 743",
     }
   ];
 }

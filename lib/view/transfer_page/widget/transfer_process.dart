@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
+import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/model/transfer_model.dart';
@@ -19,7 +20,15 @@ class TransferProcessPage extends StatefulWidget {
 }
 
 class _TransferProcessPageState extends State<TransferProcessPage> {
-  TextEditingController amountTransferTC = TextEditingController();
+  late TextEditingController amountTransferTC;
+
+  @override
+  void initState() {
+    super.initState();
+    // TODO: implement initState
+    amountTransferTC = TextEditingController(
+        text: widget.transferValue?.receiverMoney.toString());
+  }
 
   @override
   void dispose() {
@@ -59,17 +68,40 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        UIHelper.imageAvatarHelper(
-                            widget.transferValue?.receiverImage ?? '',
-                            height: 100,
-                            width: 100),
-                        VerticalSpace.regularSpace,
+                        Stack(
+                          alignment: Alignment.bottomRight,
+                          children: [
+                            Container(
+                              alignment: Alignment.center,
+                              width: 100,
+                              height: 60,
+                              child: UIHelper.imageAvatarHelper(
+                                  widget.transferValue?.receiverImage ?? '',
+                                  height: 100,
+                                  width: 100),
+                            ),
+                            isValid
+                                ? const Positioned(
+                                    bottom: 0,
+                                    right: 10,
+                                    child: Icon(
+                                      Icons.done_rounded,
+                                      color: AppColor.successColor,
+                                    ),
+                                  )
+                                : const SizedBox()
+                          ],
+                        ),
+                        VerticalSpace.smallSpace,
                         UIHelper.textHelper(
                             text: widget.transferValue?.receiverName ?? "N/A",
                             textSize: FontSize.fontSizeBigRegular),
+                        VerticalSpace.smallSpace,
                         UIHelper.textHelper(
-                            text: widget.transferValue?.receiverEmail ?? "N/A",
-                            textSize: FontSize.fontSizeMedium),
+                            text:
+                                "${widget.transferValue?.bankNumber} ${widget.transferValue?.receiverCurrencySymbol}",
+                            fontWeight: FontWeight.bold,
+                            textSize: FontSize.fontSizeBigRegular),
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.5,
                             child: UIHelper.underlineTextField(
@@ -80,7 +112,7 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                             onPressed: () {
                               try {
                                 onTransfer()
-                                    .whenComplete(() => _showSuccessDialog());
+                                    .whenComplete(() => onVerifyAccount());
                               } catch (e) {
                                 _errorDialog();
                               }
@@ -95,6 +127,28 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
           ),
         ),
       ),
+    );
+  }
+
+  bool isValid = false;
+  void onVerifyAccount() {
+    isValid = true;
+    setState(() {});
+  }
+
+  _selectPaymentAccount() {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: AppData.userBankAccount.length,
+      itemBuilder: (context, index) {
+        final userBankAccount = AppData.userBankAccount.elementAt(index);
+        return Row(
+          children: [
+            Icon(Icons.credit_card_rounded),
+            UIHelper.textHelper(text: "${userValue?.userBankAccountNumber}"),
+          ],
+        );
+      },
     );
   }
 

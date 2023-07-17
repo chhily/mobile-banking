@@ -210,7 +210,7 @@ class UIHelper {
         ));
   }
 
-  static imageAvatarHelper(String imageUrl, {double? width, double? height}) {
+  static Widget imageAvatarHelper(String imageUrl, {double? width, double? height}) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       width: 50,
