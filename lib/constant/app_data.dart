@@ -116,7 +116,7 @@ class AppData {
       'currency': '€',
       'receiver_email': 'biyao@example.com',
       'receiver_money': 43523.4,
-      'receiver_image': "https://i.pravatar.cc/150?img=3",
+      'receiver_image': "https://i.pravatar.cc/150?img=43",
       'indicate_status': "Failed"
     },
     {
@@ -148,7 +148,7 @@ class AppData {
       'currency': 'Riel',
       'receiver_email': 'thida@example.com',
       'receiver_money': 32445,
-      'receiver_image': "https://i.pravatar.cc/150?img=28",
+      'receiver_image': "https://i.pravatar.cc/150?img=44",
       'indicate_status': "Completed"
     }
   ];

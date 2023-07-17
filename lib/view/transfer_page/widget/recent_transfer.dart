@@ -22,8 +22,7 @@ class RecentTransferWidget extends StatelessWidget {
           children: [
             VerticalSpace.regularSpace,
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +60,8 @@ class RecentTransferWidget extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const TransferProcessPage(),
+                    builder: (context) =>
+                        TransferProcessPage(transferValue: transferValue),
                   ));
             },
             child: Padding(

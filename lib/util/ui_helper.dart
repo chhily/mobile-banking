@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_practice/config/app_config/app_config.dart';
 import 'package:ui_practice/constant/app_color.dart';
@@ -120,6 +121,37 @@ class UIHelper {
     );
   }
 
+  static TextFormField underlineTextField(
+      {FocusNode? focusNode,
+      Color? cursorColor,
+      TextEditingController? textEditingController,
+      bool? autofocus}) {
+    return TextFormField(
+      controller: textEditingController,
+      textAlign: TextAlign.center,
+      style: GoogleFonts.quicksand(
+          fontSize: FontSize.fontSizeTitle, fontWeight: FontWeight.bold),
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.deny(RegExp(r'[/\\]')),
+      ],
+      focusNode: focusNode,
+      autofocus: autofocus ?? false,
+      cursorColor: cursorColor ?? Colors.black,
+      cursorRadius: const Radius.circular(20),
+      cursorWidth: 1,
+      decoration: const InputDecoration(
+        constraints: BoxConstraints.tightFor(),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColor.secondary),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColor.primaryColor),
+        ),
+      ),
+    );
+  }
+
   static draggableBottomSheet(
       {required BuildContext context,
       required Widget Function(BuildContext, ScrollController) builder,
@@ -135,6 +167,26 @@ class UIHelper {
           maxChildSize: maxChildSize ?? 0.8,
           builder: builder,
         ));
+  }
+
+  static ElevatedButton buttonHelper(
+      {required void Function()? onPressed,
+      required String buttonText,
+      FontWeight? fontWeight,
+      Color? textColor,
+      Color? buttonColor,
+      double? textSize}) {
+    return ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: buttonColor ?? AppColor.secondary,
+        ),
+        child: textHelper(
+            text: buttonText,
+            fontWeight: fontWeight ?? FontWeight.bold,
+            textColor: textColor,
+            textSize: textSize ?? FontSize.fontSizeBigRegular));
   }
 
   static imageAvatarHelper(String imageUrl, {double? width, double? height}) {
