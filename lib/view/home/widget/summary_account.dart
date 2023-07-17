@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_practice/config/app_config/app_config.dart';
+import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
@@ -16,58 +17,65 @@ class AccountSummary extends StatefulWidget {
 }
 
 class _AccountSummaryState extends State<AccountSummary> {
-  UserModel? userModel;
-
+  ValueNotifier<UserModel?> userModelNotifier = ValueNotifier(UserModel());
   @override
   void initState() {
     super.initState();
     // TODO: implement initState
-    userModel = UserModel(
-      totalAmount: AppData.currencies[0]['amount'],
-      currencyValue: AppData.currencies[0]['name'],
-      currencySymbol: AppData.currencies[0]['symbol'],
-    );
+    userModelNotifier.value = userValue;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    userModelNotifier.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        VerticalSpace.hugeSpace,
-        _currencyDropDown(),
-        VerticalSpace.regularSpace,
-        UIHelper.currencyTextHelper(
-            price: userModel?.totalAmount ?? 0,
-            mainAxisAlignment: MainAxisAlignment.center,
-            currencySymbol: userModel?.currencySymbol,
-            iconColor: AppColor.white,
-            textSize: FontSize.fontSizeSuperHuge,
-            fontWeight: FontWeight.bold,
-            textColor: AppColor.white),
-        VerticalSpace.regularSpace,
-        UIHelper.textHelper(
-            text: "Available Balance", textColor: AppColor.white),
-        VerticalSpace.regularSpace,
-        OutlinedButton(
-            onPressed: () {},
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(
-                  CupertinoIcons.creditcard,
-                  color: AppColor.white,
-                  size: 16,
-                ),
-                HorizontalSpace.smallSpace,
-                UIHelper.textHelper(
-                    text: "Add Money", textColor: AppColor.white),
-              ],
-            )),
-      ],
+    return ValueListenableBuilder(
+      valueListenable: userModelNotifier,
+      builder: (context, userValue, child) {
+        return Column(
+          children: [
+            VerticalSpace.hugeSpace,
+            _currencyDropDown(userValue: userValue),
+            VerticalSpace.regularSpace,
+            UIHelper.currencyTextHelper(
+                price: userValue?.totalAmount ?? 0,
+                mainAxisAlignment: MainAxisAlignment.center,
+                currencySymbol: userValue?.currencySymbol,
+                iconColor: AppColor.white,
+                textSize: FontSize.fontSizeSuperHuge,
+                fontWeight: FontWeight.bold,
+                textColor: AppColor.white),
+            VerticalSpace.regularSpace,
+            UIHelper.textHelper(
+                text: "Available Balance", textColor: AppColor.white),
+            VerticalSpace.regularSpace,
+            OutlinedButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      CupertinoIcons.creditcard,
+                      color: AppColor.white,
+                      size: 16,
+                    ),
+                    HorizontalSpace.smallSpace,
+                    UIHelper.textHelper(
+                        text: "Add Money", textColor: AppColor.white),
+                  ],
+                )),
+          ],
+        );
+      },
     );
   }
 
-  Widget _currencyDropDown() {
+  Widget _currencyDropDown({UserModel? userValue}) {
     return InkWell(
       onTap: () {
         showModalBottomSheet(
@@ -88,28 +96,26 @@ class _AccountSummaryState extends State<AccountSummary> {
                       decoration: const BoxDecoration(
                           color: AppColor.white,
                           borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(16))),
+                              BorderRadius.vertical(top: Radius.circular(16))),
                       child: ListView.builder(
                         controller: scrollController,
                         itemCount: AppData.currencies.length,
                         itemBuilder: (BuildContext context, int index) {
                           final currencyData =
-                          AppData.currencies.elementAt(index);
+                              AppData.currencies.elementAt(index);
                           return ListTile(
-                            title:
-                            UIHelper.textHelper(text: currencyData['name']),
+                            title: UIHelper.textHelper(
+                                text: currencyData['currency_name']),
                             onTap: () {
                               if (currencyData.isEmpty) {
                                 return;
                               } else {
-                                setState(() {
-                                  // Update the selected currency.
-                                  userModel = UserModel(
-                                    totalAmount: currencyData['amount'],
-                                    currencyValue: currencyData['name'],
-                                    currencySymbol: currencyData['symbol'],
-                                  );
-                                });
+                                userModelNotifier.value = UserModel(
+                                  totalAmount: currencyData['amount'],
+                                  currencyName: currencyData['currency_name'],
+                                  currencySymbol: currencyData['symbol'],
+                                );
+                                // Update the selected currency.
                               }
                               // Close the bottom sheet.
                               Navigator.pop(context);
@@ -138,7 +144,7 @@ class _AccountSummaryState extends State<AccountSummary> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           UIHelper.textHelper(
-              text: userModel?.currencyValue ?? 'N/A',
+              text: userValue?.currencyName ?? 'N/A',
               fontWeight: FontWeight.bold,
               textColor: Colors.white,
               textSize: FontSize.fontSizeBigRegular),

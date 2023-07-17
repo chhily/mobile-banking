@@ -9,13 +9,16 @@ import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 
 class UIHelper {
-  static Text textHelper(
-      {required String text,
-      double? textSize,
-      FontWeight? fontWeight,
-      Color? textColor}) {
+  static Text textHelper({
+    required String text,
+    double? textSize,
+    FontWeight? fontWeight,
+    Color? textColor,
+    TextAlign? textAlign,
+  }) {
     return Text(
       text,
+      textAlign: textAlign,
       style: GoogleFonts.quicksand(
           height: 0,
           fontSize: textSize ?? FontSize.fontSizeRegular,
@@ -56,18 +59,48 @@ class UIHelper {
     );
   }
 
-  static Widget outlineButton({
-    required void Function()? onPressed,
-    required String buttonText,
-    Widget? childWidget,
-  }) {
+  static Widget outlineButton(
+      {required void Function()? onPressed,
+      required String buttonText,
+      Widget? childWidget,
+      Color? buttonColor,
+      Color? foregroundColor,
+      BorderSide? side,
+      OutlinedBorder? shape}) {
     return OutlinedButton(
       onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: buttonColor,
+          foregroundColor: foregroundColor,
+          side: side,
+          shape: shape),
       child: childWidget ??
           Container(
             child: textHelper(text: buttonText),
           ),
     );
+  }
+
+  static ElevatedButton buttonHelper(
+      {required void Function()? onPressed,
+      required String buttonText,
+      FontWeight? fontWeight,
+      Color? textColor,
+      Color? buttonColor,
+      double? textSize,
+      OutlinedBorder? shape}) {
+    return ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: buttonColor ?? AppColor.secondary,
+            shape: shape),
+        child: textHelper(
+            text: buttonText,
+            fontWeight: fontWeight ?? FontWeight.bold,
+            textColor: textColor,
+            textSize: textSize ?? FontSize.fontSizeBigRegular));
   }
 
   static Widget cardHelper({Color? color, Widget? childWidget}) {
@@ -84,6 +117,14 @@ class UIHelper {
       width: 2,
       height: 40,
       color: Colors.white,
+    );
+  }
+
+  static Widget horizontalDivider({double? height, Color? color}) {
+    return Divider(
+      height: height,
+      thickness: 1,
+      color: color ?? AppColor.backgroundInfo.withOpacity(0.5),
     );
   }
 
@@ -169,26 +210,6 @@ class UIHelper {
         ));
   }
 
-  static ElevatedButton buttonHelper(
-      {required void Function()? onPressed,
-      required String buttonText,
-      FontWeight? fontWeight,
-      Color? textColor,
-      Color? buttonColor,
-      double? textSize}) {
-    return ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          backgroundColor: buttonColor ?? AppColor.secondary,
-        ),
-        child: textHelper(
-            text: buttonText,
-            fontWeight: fontWeight ?? FontWeight.bold,
-            textColor: textColor,
-            textSize: textSize ?? FontSize.fontSizeBigRegular));
-  }
-
   static imageAvatarHelper(String imageUrl, {double? width, double? height}) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
@@ -223,6 +244,33 @@ class UIHelper {
                 color: AppColor.secondary,
               );
             },
+          ),
+        );
+      },
+    );
+  }
+
+  static loadingDialogHelper(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return WillPopScope(
+          onWillPop: () async => false,
+          child: const Dialog(
+            insetPadding: EdgeInsets.zero,
+            backgroundColor: Colors.transparent,
+            clipBehavior: Clip.antiAlias,
+            child: Center(
+              child: SizedBox(
+                height: 12,
+                width: 12,
+                child: CircularProgressIndicator.adaptive(
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColor.secondary),
+                  strokeWidth: 1,
+                ),
+              ),
+            ),
           ),
         );
       },

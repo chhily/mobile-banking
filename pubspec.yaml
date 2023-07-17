@@ -16,6 +16,7 @@ dependencies:
   flutter_native_splash: ^2.3.1
   intl: ^0.18.1
   cached_network_image: ^3.2.3
+  shared_preferences: ^2.2.0
 
 
 flutter_native_splash:
@@ -23,7 +24,6 @@ flutter_native_splash:
   image: "assets/images/splash_screen.png"
   ios: true
   android: true
-
 
 
 dev_dependencies:
@@ -34,3 +34,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/

@@ -13,8 +13,6 @@ class AppBorderRadius {
   );
 }
 
-
-
 class AppFormatter {
   static priceFormatter(num price) {
     final numberFormat = NumberFormat('#,###,###.##');

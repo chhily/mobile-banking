@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
@@ -68,17 +69,22 @@ class MyAppHomePage extends StatelessWidget {
 
   Widget _searchWidget() {
     return Row(
-      mainAxisSize: MainAxisSize.min,
       children: [
-        const Icon(Icons.emoji_events_rounded, color: Colors.white),
-        HorizontalSpace.bigSpace,
         Expanded(
-            child: UIHelper.textFormFieldHelper(
-                labelText: "Search",
-                suffixIcon: const Icon(
-                  CupertinoIcons.search,
-                  color: AppColor.backgroundPrimary,
-                ))),
+          child: Row(
+            children: [
+              UIHelper.imageAvatarHelper(userValue?.userProfile ?? ''),
+              HorizontalSpace.regularSpace,
+              UIHelper.textHelper(
+                  text: userValue?.userName ?? '',
+                  fontWeight: FontWeight.bold,
+                  textSize: FontSize.fontSizeBigRegular,
+                  textColor: AppColor.white),
+            ],
+          ),
+        ),
+        HorizontalSpace.bigSpace,
+        const Icon(Icons.emoji_events_rounded, color: Colors.white),
         HorizontalSpace.bigSpace,
         const Icon(CupertinoIcons.bell_solid, color: Colors.white),
       ],

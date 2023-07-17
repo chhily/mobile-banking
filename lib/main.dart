@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_practice/bottom_nav/bottom_nav.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
+import 'package:ui_practice/view/splash_screen/splash_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,6 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        dialogTheme: DialogTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
         useMaterial3: true,
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
@@ -68,9 +74,10 @@ class MyApp extends StatelessWidget {
                 surfaceTint: AppColor.white)
             .copyWith(background: AppColor.backgroundPrimary),
       ),
+      routes: {'home': (context) => const MyBottomNavigation()},
       home: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: const MyBottomNavigation()),
+          child: const SplashScreen()),
     );
   }
 }

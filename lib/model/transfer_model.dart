@@ -5,6 +5,7 @@ class TransferModel {
   String receiverCurrencySymbol;
   String receiverImage;
   String indicateStatus;
+  String? bankNumber;
 
   TransferModel({
     required this.receiverName,
@@ -13,6 +14,7 @@ class TransferModel {
     required this.receiverMoney,
     required this.receiverImage,
     required this.indicateStatus,
+    this.bankNumber,
   });
 
   factory TransferModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class TransferModel {
       receiverMoney: json["receiver_money"],
       receiverImage: json["receiver_image"],
       indicateStatus: json["indicate_status"],
+      bankNumber: json["receiver_bank"],
     );
   }
 }

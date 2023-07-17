@@ -4,56 +4,64 @@ import 'package:flutter/material.dart';
 class AppData {
   static const List<Map<String, dynamic>> currencies = [
     {
-      'name': "US Dollar",
-      "symbol": "USD",
-      'amount': 10000,
-    },
-    {
-      'name': "Khmer Riel",
+      'currency_name': "Khmer Riel",
       "symbol": "Riel",
       'amount': 43287400,
     },
     {
-      'name': "Euro",
+      'currency_name': "US Dollar",
+      "symbol": "USD",
+      'amount': 10000,
+    },
+    {
+      'currency_name': "Euro",
       "symbol": "€",
       'amount': 59.89,
     },
     {
-      'name': "British Pound",
+      'currency_name': "British Pound",
       "symbol": "£",
       'amount': 52139.89,
     },
     {
-      'name': "Japanese Yen",
+      'currency_name': "Japanese Yen",
       "symbol": "¥",
       'amount': 9456831.55,
     },
     {
-      'name': "Chinese Yuan",
+      'currency_name': "Chinese Yuan",
       "symbol": "¥",
       'amount': 12345.55,
     },
     {
-      'name': "Indian Rupee",
+      'currency_name': "Indian Rupee",
       "symbol": "Rs.",
       'amount': 0.55,
     },
     {
-      'name': "Brazilian Real",
+      'currency_name': "Brazilian Real",
       "symbol": "BRL",
       'amount': 445.14,
     },
     {
-      'name': "Australian Dollar",
+      'currency_name': "Australian Dollar",
       "symbol": "AUD",
       'amount': 456,
     },
     {
-      'name': "Canadian Dollar",
+      'currency_name': "Canadian Dollar",
       "symbol": "CUD",
       'amount': 888.123,
     },
   ];
+
+  static const Map<String, dynamic> userInfo = {
+    'bank_number': "001 125 913",
+    'bank_account': "Chhily Lim",
+    'username': "Chhily Lim",
+    'user_profile':
+        "https://i.pinimg.com/564x/e1/00/e2/e100e2f12c58d22a35222f136da20739.jpg",
+  };
 
   static List<Map<String, dynamic>> transactions = [
     {
@@ -93,7 +101,8 @@ class AppData {
       'receiver_email': 'janedoe@example.com',
       'receiver_money': 10000,
       'receiver_image': "https://i.pravatar.cc/150?img=3",
-      'indicate_status': "Completed"
+      'indicate_status': "Completed",
+      'receiver_bank': "456 456 789",
     },
     {
       'receiver_name': 'Java isHard',
@@ -101,7 +110,8 @@ class AppData {
       'receiver_email': 'java@example.com',
       'receiver_money': 123663300,
       'receiver_image': "https://i.pravatar.cc/150?img=5",
-      'indicate_status': "Pending"
+      'indicate_status': "Pending",
+      'receiver_bank': "412 132 355",
     },
     {
       'receiver_name': 'Hello World',
@@ -109,7 +119,8 @@ class AppData {
       'receiver_email': 'helloworld@example.com',
       'receiver_money': 34546,
       'receiver_image': "https://i.pravatar.cc/150?img=4",
-      'indicate_status': "Failed"
+      'indicate_status': "Failed",
+      'receiver_bank': "767 322 324",
     },
     {
       'receiver_name': 'Bi yao',
@@ -117,7 +128,8 @@ class AppData {
       'receiver_email': 'biyao@example.com',
       'receiver_money': 43523.4,
       'receiver_image': "https://i.pravatar.cc/150?img=43",
-      'indicate_status': "Failed"
+      'indicate_status': "Failed",
+      'receiver_bank': "767 322 324",
     },
     {
       'receiver_name': 'Naruto Uzumaki',
@@ -125,7 +137,8 @@ class AppData {
       'receiver_email': 'naruto@example.com',
       'receiver_money': 234.32,
       'receiver_image': "https://i.pravatar.cc/150?img=1",
-      'indicate_status': "Failed"
+      'indicate_status': "Failed",
+      'receiver_bank': "767 322 324",
     },
     {
       'receiver_name': 'Jane Doe',
@@ -133,7 +146,8 @@ class AppData {
       'receiver_email': 'janedoe@example.com',
       'receiver_money': 1321,
       'receiver_image': "https://i.pravatar.cc/150?img=55",
-      'indicate_status': "Completed"
+      'indicate_status': "Completed",
+      'receiver_bank': "767 322 324",
     },
     {
       'receiver_name': 'Jona Hello',
@@ -141,7 +155,8 @@ class AppData {
       'receiver_email': 'jona@example.com',
       'receiver_money': 543543,
       'receiver_image': "https://i.pravatar.cc/150?img=32",
-      'indicate_status': "Completed"
+      'indicate_status': "Completed",
+      'receiver_bank': "767 322 324",
     },
     {
       'receiver_name': 'Thida Kim',
@@ -149,7 +164,8 @@ class AppData {
       'receiver_email': 'thida@example.com',
       'receiver_money': 32445,
       'receiver_image': "https://i.pravatar.cc/150?img=44",
-      'indicate_status': "Completed"
+      'indicate_status': "Completed",
+      'receiver_bank': "767 322 324",
     }
   ];
 }

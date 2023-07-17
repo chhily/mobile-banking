@@ -65,12 +65,14 @@ class _TransferPageState extends State<TransferPage> {
   Future<void> onGetTransferData() async {
     _transferData = AppData.transferData.map((transfer) {
       return TransferModel(
-          receiverName: transfer["receiver_name"],
-          receiverCurrencySymbol: transfer["currency"],
-          receiverEmail: transfer["receiver_email"],
-          receiverMoney: transfer["receiver_money"],
-          receiverImage: transfer["receiver_image"],
-          indicateStatus: transfer["indicate_status"]);
+        receiverName: transfer["receiver_name"],
+        receiverCurrencySymbol: transfer["currency"],
+        receiverEmail: transfer["receiver_email"],
+        receiverMoney: transfer["receiver_money"],
+        receiverImage: transfer["receiver_image"],
+        indicateStatus: transfer["indicate_status"],
+        bankNumber: transfer["receiver_bank"],
+      );
     }).toList();
   }
 }
