@@ -35,58 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
         userBankAccountNumber: AppData.userInfo['bank_number'],
         userBankAccountName: AppData.userInfo['bank_account'],
         userProfile: AppData.userInfo['user_profile'],
-        userBankInfoList:[
-          UserBankInfo(
-            currencyName: "Khmer Riel",
-            currencySymbol: "Riel",
-            totalAmount: 43287400,
-          ),
-          UserBankInfo(
-            currencyName: "US Dollar",
-            currencySymbol: "USD",
-            totalAmount: 10000,
-          ),
-          UserBankInfo(
-            currencyName: "Euro",
-            currencySymbol: "€",
-            totalAmount: 59.89,
-          ),
-          UserBankInfo(
-            currencyName: "British Pound",
-            currencySymbol: "£",
-            totalAmount: 52139.89,
-          ),
-          UserBankInfo(
-            currencyName: "Japanese Yen",
-            currencySymbol: "¥",
-            totalAmount: 9456831.55,
-          ),
-          UserBankInfo(
-            currencyName: "Chinese Yuan",
-            currencySymbol: "¥",
-            totalAmount: 12345.55,
-          ),
-          UserBankInfo(
-            currencyName: "Indian Rupee",
-            currencySymbol: "Rs.",
-            totalAmount: 0.55,
-          ),
-          UserBankInfo(
-            currencyName: "Brazilian Real",
-            currencySymbol: "BRL",
-            totalAmount: 445.14,
-          ),
-          UserBankInfo(
-            currencyName: "Australian Dollar",
-            currencySymbol: "AUD",
-            totalAmount: 456,
-          ),
-          UserBankInfo(
-            currencyName: "Canadian Dollar",
-            currencySymbol: "CUD",
-            totalAmount: 888.123,
-          ),
-        ] );
+        userBankInfoList: AppData.bankAccountData);
     print("userBank ${userModel?.userBankInfoList?.length}");
     await Future.delayed(const Duration(seconds: 3));
     UserPreference.setUserData(userModel);

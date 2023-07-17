@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_practice/model/user_model.dart';
 
 class AppData {
   static const List<Map<String, dynamic>> userBankAccount = [
@@ -55,60 +56,110 @@ class AppData {
     },
   ];
 
-  static const listOfUserBankAccount = {
-    "bank_info" : [
-      {
+  static const listOfUserBankAccount = [
+    {
+      'bank_info': {
         'currency_name': "Khmer Riel",
         "symbol": "Riel",
         'amount': 43287400,
       },
-      {
+    },
+    {
+      'bank_info': {
         'currency_name': "US Dollar",
         "symbol": "USD",
         'amount': 10000,
       },
-      {
+    },
+    {
+      'bank_info': {
         'currency_name': "Euro",
         "symbol": "€",
         'amount': 59.89,
       },
-      {
+    },
+    {
+      'bank_info': {
         'currency_name': "British Pound",
         "symbol": "£",
         'amount': 52139.89,
       },
-      {
+    },
+    {
+      'bank_info': {
         'currency_name': "Japanese Yen",
         "symbol": "¥",
         'amount': 9456831.55,
       },
-      {
+    },
+    {
+      'bank_info': {
         'currency_name': "Chinese Yuan",
         "symbol": "¥",
         'amount': 12345.55,
       },
-      {
-        'currency_name': "Indian Rupee",
-        "symbol": "Rs.",
-        'amount': 0.55,
-      },
-      {
-        'currency_name': "Brazilian Real",
-        "symbol": "BRL",
-        'amount': 445.14,
-      },
-      {
+    },
+    {
+      'bank_info': {
         'currency_name': "Australian Dollar",
         "symbol": "AUD",
         'amount': 456,
       },
-      {
-        'currency_name': "Canadian Dollar",
-        "symbol": "CUD",
-        'amount': 888.123,
-      },
-    ]
-  };
+    },
+  ];
+
+  static List<UserBankInfo> bankAccountData = [
+    UserBankInfo(
+      currencyName: "Khmer Riel",
+      currencySymbol: "Riel",
+      totalAmount: 43287400,
+    ),
+    UserBankInfo(
+      currencyName: "US Dollar",
+      currencySymbol: "USD",
+      totalAmount: 10000,
+    ),
+    UserBankInfo(
+      currencyName: "Euro",
+      currencySymbol: "€",
+      totalAmount: 59.89,
+    ),
+    UserBankInfo(
+      currencyName: "British Pound",
+      currencySymbol: "£",
+      totalAmount: 52139.89,
+    ),
+    UserBankInfo(
+      currencyName: "Japanese Yen",
+      currencySymbol: "¥",
+      totalAmount: 9456831.55,
+    ),
+    UserBankInfo(
+      currencyName: "Chinese Yuan",
+      currencySymbol: "¥",
+      totalAmount: 12345.55,
+    ),
+    UserBankInfo(
+      currencyName: "Indian Rupee",
+      currencySymbol: "Rs.",
+      totalAmount: 0.55,
+    ),
+    UserBankInfo(
+      currencyName: "Brazilian Real",
+      currencySymbol: "BRL",
+      totalAmount: 445.14,
+    ),
+    UserBankInfo(
+      currencyName: "Australian Dollar",
+      currencySymbol: "AUD",
+      totalAmount: 456,
+    ),
+    UserBankInfo(
+      currencyName: "Canadian Dollar",
+      currencySymbol: "CUD",
+      totalAmount: 888.123,
+    ),
+  ];
 
   static const Map<String, dynamic> userInfo = {
     'bank_number': "001 125 913",
