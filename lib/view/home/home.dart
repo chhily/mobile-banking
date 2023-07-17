@@ -5,8 +5,8 @@ import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/util/ui_helper.dart';
-import 'package:ui_practice/view/home/widget/send_page.dart';
 import 'package:ui_practice/view/home/widget/summary_account.dart';
+import 'package:ui_practice/view/transfer_page/transfer_page.dart';
 
 class MyAppHomePage extends StatelessWidget {
   const MyAppHomePage({super.key});
@@ -53,7 +53,7 @@ class MyAppHomePage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const SendPage();
+                    return const TransferPage();
                   },
                 ),
               );
@@ -191,7 +191,7 @@ class MyAppHomePage extends StatelessWidget {
                   const Icon(CupertinoIcons.money_dollar_circle_fill,
                       size: 32, color: AppColor.secondary),
                   VerticalSpace.smallSpace,
-                  UIHelper.textHelper(text: "Send")
+                  UIHelper.textHelper(text: "Transfer")
                 ],
               ),
             ),
