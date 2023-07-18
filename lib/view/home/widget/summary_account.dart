@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:ui_practice/config/app_config/app_config.dart';
 import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
-import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/model/user_model.dart';
@@ -22,7 +21,7 @@ class _AccountSummaryState extends State<AccountSummary> {
   void initState() {
     super.initState();
     // TODO: implement initState
-    userModelNotifier.value = userValue;
+    onInitValue();
   }
 
   @override
@@ -30,6 +29,10 @@ class _AccountSummaryState extends State<AccountSummary> {
     // TODO: implement dispose
     userModelNotifier.dispose();
     super.dispose();
+  }
+
+  onInitValue() async {
+    userModelNotifier.value = userValue;
   }
 
   @override
@@ -43,9 +46,10 @@ class _AccountSummaryState extends State<AccountSummary> {
             _currencyDropDown(userValue: userValue),
             VerticalSpace.regularSpace,
             UIHelper.currencyTextHelper(
-                price: userValue?.totalAmount ?? 0,
+                price: userValue?.userDefaultAccount?.totalAmount ?? 0,
                 mainAxisAlignment: MainAxisAlignment.center,
-                currencySymbol: userValue?.currencySymbol,
+                currencySymbol:
+                    userValue?.userDefaultAccount?.currencySymbol ?? "N/A",
                 iconColor: AppColor.white,
                 textSize: FontSize.fontSizeSuperHuge,
                 fontWeight: FontWeight.bold,
@@ -99,22 +103,23 @@ class _AccountSummaryState extends State<AccountSummary> {
                               BorderRadius.vertical(top: Radius.circular(16))),
                       child: ListView.builder(
                         controller: scrollController,
-                        itemCount: AppData.userBankAccount.length,
+                        itemCount: userValue?.userBankInfoList?.length ?? 0,
                         itemBuilder: (BuildContext context, int index) {
-                          final currencyData =
-                              AppData.userBankAccount.elementAt(index);
+                          final accountData =
+                              userValue?.userBankInfoList?.elementAt(index);
                           return ListTile(
                             title: UIHelper.textHelper(
-                                text: currencyData['currency_name']),
+                                text: accountData?.currencyName ?? "N/A"),
                             onTap: () {
-                              if (currencyData.isEmpty) {
+                              if (accountData == null) {
                                 return;
                               } else {
                                 userModelNotifier.value = UserModel(
-                                  totalAmount: currencyData['amount'],
-                                  currencyName: currencyData['currency_name'],
-                                  currencySymbol: currencyData['symbol'],
-                                );
+
+                                    // totalAmount: accountData?.totalAmount,
+                                    // currencyName: accountData?.currencyName,
+                                    // currencySymbol: accountData?.currencySymbol,
+                                    );
                                 // Update the selected currency.
                               }
                               // Close the bottom sheet.
@@ -127,6 +132,7 @@ class _AccountSummaryState extends State<AccountSummary> {
                     Container(
                       width: 80,
                       height: 12,
+                      margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: AppColor.secondary,
                           borderRadius: AppBorderRadius.circularBorderRadius),
@@ -144,7 +150,7 @@ class _AccountSummaryState extends State<AccountSummary> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           UIHelper.textHelper(
-              text: userValue?.currencyName ?? 'N/A',
+              text: 'N/A',
               fontWeight: FontWeight.bold,
               textColor: Colors.white,
               textSize: FontSize.fontSizeBigRegular),

@@ -136,21 +136,21 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
     setState(() {});
   }
 
-  _selectPaymentAccount() {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: AppData.userBankAccount.length,
-      itemBuilder: (context, index) {
-        final userBankAccount = AppData.userBankAccount.elementAt(index);
-        return Row(
-          children: [
-            Icon(Icons.credit_card_rounded),
-            UIHelper.textHelper(text: "${userValue?.userBankAccountNumber}"),
-          ],
-        );
-      },
-    );
-  }
+  // _selectPaymentAccount() {
+  //   return ListView.builder(
+  //     shrinkWrap: true,
+  //     itemCount: AppData.userBankAccount.length,
+  //     itemBuilder: (context, index) {
+  //       final userBankAccount = AppData.userBankAccount.elementAt(index);
+  //       return Row(
+  //         children: [
+  //           Icon(Icons.credit_card_rounded),
+  //           UIHelper.textHelper(text: "${userValue?.userBankAccountNumber}"),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
   Future<void> onTransfer() async {
     UIHelper.loadingDialogHelper(context);

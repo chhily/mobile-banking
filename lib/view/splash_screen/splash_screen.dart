@@ -28,9 +28,9 @@ class _SplashScreenState extends State<SplashScreen> {
     // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
     // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
     userModel = UserModel(
-        totalAmount: AppData.userBankAccount[0]['amount'],
-        currencyName: AppData.userBankAccount[0]['currency_name'],
-        currencySymbol: AppData.userBankAccount[0]['symbol'],
+        // totalAmount: AppData.userBankAccount[0]['amount'],
+        // currencyName: AppData.userBankAccount[0]['currency_name'],
+        // currencySymbol: AppData.userBankAccount[0]['symbol'],
         userName: AppData.userInfo['username'],
         userBankAccountNumber: AppData.userInfo['bank_number'],
         userBankAccountName: AppData.userInfo['bank_account'],
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
         userBankInfoList: AppData.bankAccountData);
     print("userBank ${userModel?.userBankInfoList?.length}");
     await Future.delayed(const Duration(seconds: 3));
-    UserPreference.setUserData(userModel);
+    // UserPreference.setUserData(userModel);
     userValue = await UserPreference.getUserPrefs();
     // FlutterNativeSplash.remove();
     if (!mounted) return;

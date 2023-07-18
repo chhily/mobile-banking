@@ -6,16 +6,18 @@ import 'package:ui_practice/model/user_model.dart';
 UserModel? userValue;
 
 class UserPreference {
-  static Future<UserModel?> setUserData(UserModel? userModel) async {
+  static Future<void> setUserData(UserModel userPref) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String json = jsonEncode(userModel);
-    prefs.setString('user_prefs', json);
-    return userModel;
+    await prefs.setString('user_prefs', jsonEncode(userPref));
   }
 
   static Future<UserModel?> getUserPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var user = prefs.getString('user_prefs');
-    return user == null ? null : UserModel.fromJson(jsonDecode(user));
+    var userObj = await prefs.getString('user_prefs');
+    UserModel? userModelFromStorage;
+    if (userObj != null) {
+      userModelFromStorage = UserModel.fromJson(jsonDecode(userObj));
+    }
+    return userModelFromStorage;
   }
 }

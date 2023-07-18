@@ -77,7 +77,7 @@ class MyApp extends StatelessWidget {
       routes: {'home': (context) => const MyBottomNavigation()},
       home: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: const SplashScreen()),
+          child: const MyBottomNavigation()),
     );
   }
 }
