@@ -25,13 +25,13 @@ class MyAppHomePage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(12),
               color: AppColor.secondary,
-              height: MediaQuery.of(context).size.height * 0.4,
+              height: MediaQuery.of(context).size.height * 0.6,
               child: SafeArea(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    _searchWidget(),
+                    _headerWidget(),
                     const AccountSummary(),
                   ],
                 ),
@@ -40,35 +40,18 @@ class MyAppHomePage extends StatelessWidget {
             Expanded(
               child: Container(
                 color: AppColor.backgroundPrimary,
-                padding: const EdgeInsets.all(12),
-                height: MediaQuery.of(context).size.height * 0.6,
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                height: MediaQuery.of(context).size.height * 0.4,
                 child: _transactionWidget(),
               ),
             ),
           ],
         ),
-        Positioned(
-          top: MediaQuery.of(context).size.height * 0.35,
-          child: _summaryCard(
-            onSendTransaction: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const TransferPage();
-                  },
-                ),
-              );
-            },
-            onRequestTransaction: () {},
-            onUtilityTransaction: () {},
-          ),
-        ),
       ],
     );
   }
 
-  Widget _searchWidget() {
+  Widget _headerWidget() {
     return Row(
       children: [
         Expanded(
@@ -76,18 +59,39 @@ class MyAppHomePage extends StatelessWidget {
             children: [
               UIHelper.imageAvatarHelper(userValue?.userProfile ?? ''),
               HorizontalSpace.regularSpace,
-              UIHelper.textHelper(
-                  text: userValue?.userName ?? '',
-                  fontWeight: FontWeight.bold,
-                  textSize: FontSize.fontSizeBigRegular,
-                  textColor: AppColor.white),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  UIHelper.textHelper(
+                      text: userValue?.userName ?? '',
+                      fontWeight: FontWeight.bold,
+                      textSize: FontSize.fontSizeBigRegular,
+                      textColor: AppColor.white),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      UIHelper.textHelper(
+                          text: "View Profile",
+                          textSize: FontSize.fontSizeMedium,
+                          textColor: AppColor.white),
+                     const  Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 10,
+                       color: AppColor.white,
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ),
         HorizontalSpace.bigSpace,
-        const Icon(Icons.emoji_events_rounded, color: Colors.white),
+        const Icon(CupertinoIcons.bell, color: Colors.white),
         HorizontalSpace.bigSpace,
-        const Icon(CupertinoIcons.bell_solid, color: Colors.white),
+        const Icon(CupertinoIcons.qrcode, color: Colors.white),
       ],
     );
   }
@@ -97,7 +101,6 @@ class MyAppHomePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 40),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

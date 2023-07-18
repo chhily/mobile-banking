@@ -32,6 +32,5 @@ initializeAppData() async {
 
   await UserPreference.setUserData(userModel);
   userValue = await UserPreference.getUserPrefs();
-  print("object ${userValue?.userDefaultAccount?.totalAmount}");
 
 }
