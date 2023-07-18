@@ -14,7 +14,8 @@ class TransactionWidget extends StatelessWidget {
       separatorBuilder: (context, index) => Divider(
           thickness: 1, color: AppColor.secondary.withOpacity(0.1)),
       shrinkWrap: true,
-      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
       itemCount: AppData.transactions.length,
       itemBuilder: (context, index) {
         final transactionData = AppData.transactions.elementAt(index);

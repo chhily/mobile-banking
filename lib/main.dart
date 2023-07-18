@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ui_practice/bottom_nav/bottom_nav.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
-import 'package:ui_practice/view/splash_screen/splash_screen.dart';
+import 'package:ui_practice/util/helper.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -36,13 +36,17 @@ class MyApp extends StatelessWidget {
           ),
         ),
         splashFactory: InkSparkle.splashFactory,
+        splashColor: AppColor.primaryColor.withOpacity(0.5),
         actionIconTheme: ActionIconThemeData(
           closeButtonIconBuilder: (context) {
             return const Icon(Icons.close_outlined);
           },
-          // backButtonIconBuilder: (context) {
-          //   return const Icon(Icons.arrow_back_ios);
-          // },
+          backButtonIconBuilder: (context) {
+            return Icon(
+              Icons.arrow_back,
+              color: isLightMode ? Colors.black : AppColor.white,
+            );
+          },
         ),
         navigationBarTheme: NavigationBarThemeData(
             backgroundColor: AppColor.white,

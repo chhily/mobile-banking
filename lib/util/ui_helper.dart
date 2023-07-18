@@ -106,6 +106,9 @@ class UIHelper {
   static Widget cardHelper({Color? color, Widget? childWidget}) {
     return Card(
       elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: AppBorderRadius.circularBorderRadius,
+      ),
       color: color ?? AppColor.white,
       margin: EdgeInsets.zero,
       child: childWidget ?? const Placeholder(),
@@ -210,7 +213,8 @@ class UIHelper {
         ));
   }
 
-  static Widget imageAvatarHelper(String imageUrl, {double? width, double? height}) {
+  static Widget imageAvatarHelper(String imageUrl,
+      {double? width, double? height}) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       width: 50,

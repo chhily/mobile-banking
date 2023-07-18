@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
-import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/model/transfer_model.dart';
@@ -43,6 +42,8 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
+        backgroundColor:
+            AppHelper.onChangeBackgroundColor(isLightMode: isLightMode),
         appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -53,10 +54,12 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
               UIHelper.textHelper(
                   text: 'Enter Amount',
                   fontWeight: FontWeight.bold,
+                  textColor: AppHelper.textColor(isLightMode),
                   textSize: FontSize.fontSizeTitle),
               VerticalSpace.regularSpace,
               UIHelper.textHelper(
                 text: 'Select a Method for Sending Money',
+                textColor: AppHelper.textColor(isLightMode),
               ),
               VerticalSpace.bigSpace,
               SizedBox(

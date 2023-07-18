@@ -5,17 +5,20 @@ import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/model/transfer_model.dart';
+import 'package:ui_practice/util/helper.dart';
 import 'package:ui_practice/util/ui_helper.dart';
 import 'package:ui_practice/view/transfer_page/widget/transfer_process.dart';
 
 class RecentTransferWidget extends StatelessWidget {
-  const RecentTransferWidget({super.key, required this.transferData});
+  final bool isLightMode;
+  const RecentTransferWidget(
+      {super.key, required this.transferData, required this.isLightMode});
   final List<TransferModel> transferData;
 
   @override
   Widget build(BuildContext context) {
     return UIHelper.cardHelper(
-        color: AppColor.white,
+        color: isLightMode ? AppColor.babyBlue : AppColor.darkPrimary,
         childWidget: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +33,7 @@ class RecentTransferWidget extends StatelessWidget {
                   SizedBox(
                     height: 40,
                     child: UIHelper.textFormFieldHelper(
-                        textColor: Colors.black,
+                        textColor: AppHelper.textColor(isLightMode),
                         labelText: "Search ``example@gmail.com`` ",
                         suffixIcon: const Icon(CupertinoIcons.search,
                             color: AppColor.contentDisable),
@@ -39,6 +42,7 @@ class RecentTransferWidget extends StatelessWidget {
                   ),
                   VerticalSpace.bigSpace,
                   UIHelper.textHelper(
+                      textColor: AppHelper.textColor(isLightMode),
                       text: "Most Recent",
                       textSize: FontSize.fontSizeBigRegular),
                 ],
@@ -77,10 +81,14 @@ class RecentTransferWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        UIHelper.textHelper(text: transferValue.receiverName),
+                        UIHelper.textHelper(
+                          text: transferValue.receiverName,
+                          textColor: AppHelper.textColor(isLightMode),
+                        ),
                         VerticalSpace.smallSpace,
                         UIHelper.textHelper(
                             text: transferValue.bankNumber ?? 'N/A',
+                            textColor: AppHelper.textColor(isLightMode),
                             fontWeight: FontWeight.bold,
                             textSize: FontSize.fontSizeMedium),
                       ],
