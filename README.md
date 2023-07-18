@@ -14,8 +14,25 @@ This is a Flutter application that uses Material 3 to create a bank application 
   * QuickSand (EngLish)
 
 # Screenshot:
+## light Mode
 
 <div style="text-align:center; width: 100%;">
-  <img src="assets/images/home.jpg" width="300" height="auto" align="center">
-    <img src="assets/images/transfer.jpg" width="300" height="auto" align="center">
+  <img src="assets/images/light_home.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/light_transfer.jpg" width="300" height="auto" align="center">
+</div>
+</br>
+<div style="text-align:center; width: 100%;">
+  <img src="assets/images/light_send.jpg" width="300" height="auto" align="center">
+</div>
+
+
+## dark mode
+
+<div style="text-align:center; width: 100%;">
+  <img src="assets/images/dark_home.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark_transfer.jpg" width="300" height="auto" align="center">
+</div>
+</br>
+<div style="text-align:center; width: 100%;">
+  <img src="assets/images/dark_send.jpg" width="300" height="auto" align="center">
 </div>
