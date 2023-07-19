@@ -100,6 +100,13 @@ class AppTheme {
             background: AppColor.lightSecondary,
             surfaceTint: AppColor.white)
         .copyWith(background: AppColor.backgroundPrimary),
+    dialogBackgroundColor: AppColor.white,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        elevation: 0,
+        backgroundColor: AppColor.midNightBlue,
+      ),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -178,6 +185,10 @@ class AppTheme {
         backgroundColor: AppColor.midNightBlue,
       ),
     ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColor.darkSecondary,
+    ),
+    dialogBackgroundColor: AppColor.white,
     cardTheme: const CardTheme(color: AppColor.darkPrimary),
     colorScheme: ColorScheme.fromSwatch()
         .copyWith(

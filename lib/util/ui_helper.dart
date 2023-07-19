@@ -232,7 +232,8 @@ class UIHelper {
             height: 12,
             width: 12,
             child: CircularProgressIndicator.adaptive(
-              valueColor: AlwaysStoppedAnimation<Color>(AppColor.lightPrimaryColor),
+              valueColor:
+                  AlwaysStoppedAnimation<Color>(AppColor.lightPrimaryColor),
               strokeWidth: 1,
             ),
           ),
@@ -264,19 +265,38 @@ class UIHelper {
           onWillPop: () async => false,
           child: const Dialog(
             insetPadding: EdgeInsets.zero,
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.black45,
             clipBehavior: Clip.antiAlias,
             child: Center(
               child: SizedBox(
                 height: 12,
                 width: 12,
                 child: CircularProgressIndicator.adaptive(
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColor.lightSecondary),
+                  valueColor:
+                      AlwaysStoppedAnimation<Color>(AppColor.midNightBlue),
                   strokeWidth: 1,
                 ),
               ),
             ),
           ),
+        );
+      },
+    );
+  }
+
+  static showDialogHelper({
+    required BuildContext context,
+    required Widget child,
+    ShapeBorder? shape,
+  }) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Dialog(
+          shape: shape ??
+              RoundedRectangleBorder(
+                  borderRadius: AppBorderRadius.circularBorderRadius),
+          child: child,
         );
       },
     );

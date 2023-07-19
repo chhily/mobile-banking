@@ -32,7 +32,7 @@ class AccountSummary extends StatelessWidget {
           onSendTransaction: () {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return TransferPage(isLightMode: isLightMode);
+                return const TransferPage();
               },
             ));
           },
@@ -84,7 +84,7 @@ class AccountSummary extends StatelessWidget {
                 ),
                 HorizontalSpace.smallSpace,
                 UIHelper.textHelper(
-                    text: userValue?.userBankAccountName ?? "N/A",
+                    text: userValue?.userBankAccountNumber ?? "N/A",
                     textColor: themColor(isLightMode),
                     textSize: FontSize.fontSizeMedium)
               ],

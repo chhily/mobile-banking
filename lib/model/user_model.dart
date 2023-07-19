@@ -50,21 +50,40 @@ class UserBankInfo {
   String? currencyName;
   String? currencySymbol;
   num? totalAmount;
+  String? userName;
+  String? accountType;
+  String? userAccountNumber;
+  String? dayLimited;
 
-  UserBankInfo({this.totalAmount, this.currencySymbol, this.currencyName});
+  UserBankInfo({
+    this.totalAmount,
+    this.currencySymbol,
+    this.currencyName,
+    this.userAccountNumber,
+    this.accountType,
+    this.userName,
+    this.dayLimited,
+  });
 
   factory UserBankInfo.fromJson(Map<String, dynamic> json) {
     return UserBankInfo(
-      currencyName: json['currency_name'],
-      currencySymbol: json['symbol'],
-      totalAmount: json['amount'],
-    );
+        currencyName: json['currency_name'],
+        currencySymbol: json['symbol'],
+        totalAmount: json['amount'],
+        accountType: json['account_type'],
+        userAccountNumber: json['bank_number'],
+        userName: json['username'],
+        dayLimited: json['day_limited']);
   }
 
   Map<String, dynamic> toJson() => {
         'amount': totalAmount,
         'currency_name': currencyName,
         'symbol': currencySymbol,
+        "username": userName,
+        "bank_number": userAccountNumber,
+        "account_type": accountType,
+        "day_limited": dayLimited,
       };
 }
 

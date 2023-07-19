@@ -18,6 +18,8 @@ class MyAppHomePage extends StatefulWidget {
 
 class _MyAppHomePageState extends State<MyAppHomePage> {
   @override
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -184,72 +186,4 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
     );
   }
 
-  Widget _summaryCard(
-      {void Function()? onSendTransaction,
-      void Function()? onRequestTransaction,
-      void Function()? onUtilityTransaction}) {
-    return Card(
-      elevation: 0,
-      color: AppColor.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          IconButton(
-            onPressed: onSendTransaction,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints.tightFor(),
-            icon: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 32.0, vertical: 12),
-              child: Column(
-                children: [
-                  const Icon(CupertinoIcons.money_dollar_circle_fill,
-                      size: 32, color: AppColor.lightSecondary),
-                  VerticalSpace.smallSpace,
-                  UIHelper.textHelper(text: "History")
-                ],
-              ),
-            ),
-          ),
-          UIHelper.verticalDivider(),
-          IconButton(
-            onPressed: onRequestTransaction,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints.tightFor(),
-            icon: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 32.0, vertical: 12),
-              child: Column(
-                children: [
-                  const Icon(Icons.autorenew_rounded,
-                      size: 32, color: AppColor.successColor),
-                  VerticalSpace.smallSpace,
-                  UIHelper.textHelper(text: "Request")
-                ],
-              ),
-            ),
-          ),
-          UIHelper.verticalDivider(),
-          IconButton(
-            onPressed: onUtilityTransaction,
-            padding: EdgeInsets.zero,
-            constraints: const BoxConstraints.tightFor(),
-            icon: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 32.0, vertical: 12),
-              child: Column(
-                children: [
-                  const Icon(Icons.account_balance_rounded,
-                      size: 32, color: AppColor.warnColor),
-                  VerticalSpace.smallSpace,
-                  UIHelper.textHelper(text: "Utility")
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
