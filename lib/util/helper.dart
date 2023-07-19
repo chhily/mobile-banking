@@ -14,7 +14,7 @@ class AppHelper {
     if (isLightMode) {
       return [AppColor.lightPrimaryColor, AppColor.lightSecondary];
     } else {
-      return [AppColor.darkPrimary, AppColor.darkSecondary];
+      return [AppColor.midNightBlue, AppColor.darkPrimary];
     }
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui_practice/bottom_nav/bottom_nav.dart';
 import 'package:ui_practice/constant/app_color.dart';
+import 'package:ui_practice/view/home/home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       routes: {'home': (context) => const MyBottomNavigation()},
       home: GestureDetector(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-          child: const MyBottomNavigation()),
+          child: const MyAppHomePage()),
     );
   }
 }

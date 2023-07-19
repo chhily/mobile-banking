@@ -18,48 +18,49 @@ class MyAppHomePage extends StatefulWidget {
 
 class _MyAppHomePageState extends State<MyAppHomePage> {
   @override
-
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: AppHelper.onChangeTheme(isLightMode: isLightMode),
-          begin: Alignment.bottomCenter,
-          end: Alignment.topRight,
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: AppHelper.onChangeTheme(isLightMode: isLightMode),
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          ),
         ),
-      ),
-      alignment: Alignment.center,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          VerticalSpace.regularSpace,
-          const SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 14.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            VerticalSpace.regularSpace,
+            const SafeArea(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 14.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    HorizontalSpace.bigSpace,
+                    Icon(CupertinoIcons.bell, color: Colors.white),
+                    HorizontalSpace.bigSpace,
+                    Icon(CupertinoIcons.qrcode, color: Colors.white),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
                 children: [
-                  HorizontalSpace.bigSpace,
-                  Icon(CupertinoIcons.bell, color: Colors.white),
-                  HorizontalSpace.bigSpace,
-                  Icon(CupertinoIcons.qrcode, color: Colors.white),
+                  _buildUserProfile(),
+                  VerticalSpace.regularSpace,
+                  AccountSummary(isLightMode: isLightMode),
+                  _transactionWidget(),
                 ],
               ),
             ),
-          ),
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-              children: [
-                _buildUserProfile(),
-                VerticalSpace.regularSpace,
-                AccountSummary(isLightMode: isLightMode),
-                _transactionWidget(),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -185,5 +186,4 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
       ],
     );
   }
-
 }
