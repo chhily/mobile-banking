@@ -29,7 +29,7 @@ class UsabilityWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return UIHelper.cardHelper(
       color: isLightMode
-          ? AppColor.primaryColor
+          ? AppColor.lightPrimaryColor
           : AppColor.darkPrimary.withOpacity(0.5),
       childWidget: Padding(
         padding: const EdgeInsets.all(8.0),

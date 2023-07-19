@@ -73,7 +73,7 @@ class AccountSummary extends StatelessWidget {
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
                     color: isLightMode
-                        ? AppColor.primaryColor
+                        ? AppColor.lightPrimaryColor
                         : AppColor.midNightBlue,
                     borderRadius: AppBorderRadius.circularBorderRadius,
                   ),

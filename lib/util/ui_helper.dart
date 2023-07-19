@@ -93,9 +93,7 @@ class UIHelper {
     return ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor: buttonColor ?? AppColor.secondary,
-            shape: shape),
+            elevation: 0, backgroundColor: buttonColor, shape: shape),
         child: textHelper(
             text: buttonText,
             fontWeight: fontWeight ?? FontWeight.bold,
@@ -109,7 +107,7 @@ class UIHelper {
       shape: RoundedRectangleBorder(
         borderRadius: AppBorderRadius.circularBorderRadius,
       ),
-      color: color ?? AppColor.white,
+      color: color,
       margin: EdgeInsets.zero,
       child: childWidget ?? const Placeholder(),
     );
@@ -154,7 +152,7 @@ class UIHelper {
         fillColor: fillColor ?? AppColor.backgroundPrimary.withOpacity(0.2),
         focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(25)),
-          borderSide: BorderSide(width: 1, color: AppColor.primaryColor),
+          borderSide: BorderSide(width: 1, color: AppColor.lightPrimaryColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: const BorderRadius.all(Radius.circular(25)),
@@ -168,13 +166,16 @@ class UIHelper {
   static TextFormField underlineTextField(
       {FocusNode? focusNode,
       Color? cursorColor,
+      Color? textFieldColor,
       TextEditingController? textEditingController,
       bool? autofocus}) {
     return TextFormField(
       controller: textEditingController,
       textAlign: TextAlign.center,
       style: GoogleFonts.quicksand(
-          fontSize: FontSize.fontSizeTitle, fontWeight: FontWeight.bold),
+          fontSize: FontSize.fontSizeTitle,
+          fontWeight: FontWeight.bold,
+          color: textFieldColor),
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.deny(RegExp(r'[/\\]')),
@@ -187,10 +188,10 @@ class UIHelper {
       decoration: const InputDecoration(
         constraints: BoxConstraints.tightFor(),
         enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColor.secondary),
+          borderSide: BorderSide(color: AppColor.lightSecondary),
         ),
         focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColor.primaryColor),
+          borderSide: BorderSide(color: AppColor.lightPrimaryColor),
         ),
       ),
     );
@@ -231,7 +232,7 @@ class UIHelper {
             height: 12,
             width: 12,
             child: CircularProgressIndicator.adaptive(
-              valueColor: AlwaysStoppedAnimation<Color>(AppColor.primaryColor),
+              valueColor: AlwaysStoppedAnimation<Color>(AppColor.lightPrimaryColor),
               strokeWidth: 1,
             ),
           ),
@@ -245,7 +246,7 @@ class UIHelper {
             errorBuilder: (context, error, stackTrace) {
               return const Icon(
                 CupertinoIcons.person,
-                color: AppColor.secondary,
+                color: AppColor.lightSecondary,
               );
             },
           ),
@@ -270,7 +271,7 @@ class UIHelper {
                 height: 12,
                 width: 12,
                 child: CircularProgressIndicator.adaptive(
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColor.secondary),
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColor.lightSecondary),
                   strokeWidth: 1,
                 ),
               ),

@@ -18,41 +18,36 @@ class RecentTransferWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return UIHelper.cardHelper(
-        color: isLightMode ? AppColor.babyBlue : AppColor.darkPrimary,
         childWidget: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            VerticalSpace.regularSpace,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 40,
-                    child: UIHelper.textFormFieldHelper(
-                        textColor: AppHelper.textColor(isLightMode),
-                        labelText: "Search ``example@gmail.com`` ",
-                        suffixIcon: const Icon(CupertinoIcons.search,
-                            color: AppColor.contentDisable),
-                        fillColor: AppColor.backgroundInfo.withOpacity(0.1),
-                        enableColor: AppColor.secondary),
-                  ),
-                  VerticalSpace.bigSpace,
-                  UIHelper.textHelper(
-                      textColor: AppHelper.textColor(isLightMode),
-                      text: "Most Recent",
-                      textSize: FontSize.fontSizeBigRegular),
-                ],
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        VerticalSpace.regularSpace,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 40,
+                child: UIHelper.textFormFieldHelper(
+                    labelText: "Search ``example@gmail.com`` ",
+                    suffixIcon: const Icon(CupertinoIcons.search,
+                        color: AppColor.contentDisable),
+                    fillColor: AppColor.backgroundInfo.withOpacity(0.1),
+                    enableColor: AppColor.lightSecondary),
               ),
-            ),
-            Expanded(
-                child: _buildRecentTransferList(transferData: transferData)),
-            VerticalSpace.smallSpace,
-          ],
-        ));
+              VerticalSpace.bigSpace,
+              UIHelper.textHelper(
+                  text: "Most Recent", textSize: FontSize.fontSizeBigRegular),
+            ],
+          ),
+        ),
+        Expanded(child: _buildRecentTransferList(transferData: transferData)),
+        VerticalSpace.smallSpace,
+      ],
+    ));
   }
 
   Widget _buildRecentTransferList({required List<TransferModel> transferData}) {
@@ -83,12 +78,10 @@ class RecentTransferWidget extends StatelessWidget {
                       children: [
                         UIHelper.textHelper(
                           text: transferValue.receiverName,
-                          textColor: AppHelper.textColor(isLightMode),
                         ),
                         VerticalSpace.smallSpace,
                         UIHelper.textHelper(
                             text: transferValue.bankNumber ?? 'N/A',
-                            textColor: AppHelper.textColor(isLightMode),
                             fontWeight: FontWeight.bold,
                             textSize: FontSize.fontSizeMedium),
                       ],

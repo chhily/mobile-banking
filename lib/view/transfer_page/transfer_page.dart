@@ -35,8 +35,6 @@ class _TransferPageState extends State<TransferPage> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor:
-            AppHelper.onChangeBackgroundColor(isLightMode: widget.isLightMode),
         appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
@@ -48,12 +46,10 @@ class _TransferPageState extends State<TransferPage> {
                 text: "Choose Recipient",
                 textSize: FontSize.fontSizeTitle,
                 fontWeight: FontWeight.bold,
-                textColor: AppHelper.textColor(isLightMode),
               ),
               VerticalSpace.regularSpace,
               UIHelper.textHelper(
                 text: "Please select your recipient to send money",
-                textColor: AppHelper.textColor(isLightMode),
               ),
               VerticalSpace.bigSpace,
               Expanded(

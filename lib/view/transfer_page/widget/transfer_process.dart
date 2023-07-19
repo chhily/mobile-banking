@@ -42,8 +42,6 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor:
-            AppHelper.onChangeBackgroundColor(isLightMode: isLightMode),
         appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -54,17 +52,16 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
               UIHelper.textHelper(
                   text: 'Enter Amount',
                   fontWeight: FontWeight.bold,
-                  textColor: AppHelper.textColor(isLightMode),
                   textSize: FontSize.fontSizeTitle),
               VerticalSpace.regularSpace,
               UIHelper.textHelper(
                 text: 'Select a Method for Sending Money',
-                textColor: AppHelper.textColor(isLightMode),
               ),
               VerticalSpace.bigSpace,
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: UIHelper.cardHelper(
+                  color: AppColor.white,
                   childWidget: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -98,17 +95,20 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                         VerticalSpace.smallSpace,
                         UIHelper.textHelper(
                             text: widget.transferValue?.receiverName ?? "N/A",
+                            textColor: AppColor.darkPrimary,
                             textSize: FontSize.fontSizeBigRegular),
                         VerticalSpace.smallSpace,
                         UIHelper.textHelper(
                             text:
                                 "${widget.transferValue?.bankNumber} ${widget.transferValue?.receiverCurrencySymbol}",
                             fontWeight: FontWeight.bold,
+                            textColor: AppColor.darkPrimary,
                             textSize: FontSize.fontSizeBigRegular),
                         SizedBox(
                             width: MediaQuery.of(context).size.width * 0.5,
                             child: UIHelper.underlineTextField(
                                 textEditingController: amountTransferTC,
+                                textFieldColor: AppColor.darkPrimary,
                                 autofocus: true)),
                         VerticalSpace.hugeSpace,
                         UIHelper.buttonHelper(
@@ -120,7 +120,8 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                                 _errorDialog();
                               }
                             },
-                            buttonText: "Continue")
+                            buttonText: "Continue",
+                            textColor: AppColor.white)
                       ],
                     ),
                   ),
@@ -264,8 +265,8 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        foregroundColor: AppColor.secondary,
-                        side: const BorderSide(color: AppColor.secondary),
+                        foregroundColor: AppColor.lightSecondary,
+                        side: const BorderSide(color: AppColor.lightSecondary),
                         shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero),
                         buttonText: "Request Help"),
@@ -310,7 +311,7 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
     return Row(
       children: [
         CircleAvatar(
-          backgroundColor: AppColor.secondary,
+          backgroundColor: AppColor.lightSecondary,
           child: UIHelper.textHelper(text: accountFirstLetter),
         ),
         HorizontalSpace.regularSpace,

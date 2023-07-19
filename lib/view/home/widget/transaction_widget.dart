@@ -12,7 +12,7 @@ class TransactionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  ListView.separated(
       separatorBuilder: (context, index) => Divider(
-          thickness: 1, color: AppColor.secondary.withOpacity(0.1)),
+          thickness: 1, color: AppColor.lightSecondary.withOpacity(0.1)),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),

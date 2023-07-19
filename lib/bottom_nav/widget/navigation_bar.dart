@@ -38,7 +38,7 @@ class NavigationBarWidget extends StatelessWidget {
           icon: Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: AppColor.secondary),
+                color: AppColor.lightSecondary),
             padding: const EdgeInsets.all(10),
             child: const Icon(
               Icons.filter_center_focus_rounded,

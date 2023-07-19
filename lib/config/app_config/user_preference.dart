@@ -20,4 +20,16 @@ class UserPreference {
     }
     return userModelFromStorage;
   }
+
+  static Future<bool> getBrightnessFromSharedPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isDarkMode = prefs.getBool('isDarkMode') ?? false;
+    return isDarkMode;
+  }
+
+  static Future<void> setBrightnessInSharedPrefs(bool isDarkMode) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isDarkMode', isDarkMode);
+  }
+
 }

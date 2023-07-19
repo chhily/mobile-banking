@@ -20,7 +20,6 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // color: AppColor.secondary,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: AppHelper.onChangeTheme(isLightMode: isLightMode),
@@ -179,7 +178,6 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
           ],
         ),
         UIHelper.cardHelper(
-          color: AppColor.backgroundPrimary,
           childWidget: const TransactionWidget(),
         )
       ],
@@ -207,7 +205,7 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
               child: Column(
                 children: [
                   const Icon(CupertinoIcons.money_dollar_circle_fill,
-                      size: 32, color: AppColor.secondary),
+                      size: 32, color: AppColor.lightSecondary),
                   VerticalSpace.smallSpace,
                   UIHelper.textHelper(text: "History")
                 ],

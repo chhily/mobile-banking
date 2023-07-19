@@ -14,6 +14,9 @@ class _MyBottomNavigationState extends State<MyBottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: const MyAppHomePage(),
+    );
+    return Scaffold(
       bottomNavigationBar: NavigationBarWidget(
         selectedIndex: currentPageIndex,
         onDestinationSelected: (newIndex) {

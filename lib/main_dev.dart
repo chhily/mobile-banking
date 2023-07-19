@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:ui_practice/config/app_config/user_preference.dart';
@@ -7,10 +5,12 @@ import 'package:ui_practice/config/flavor/flavor_config.dart';
 import 'package:ui_practice/constant/app_data.dart';
 import 'package:ui_practice/main.dart';
 import 'package:ui_practice/model/user_model.dart';
+import 'package:ui_practice/util/helper.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await onCheckSystemTheme();
   await initializeAppData();
   FlavorConfig(flavor: Flavor.dev, values: FlavorValues(appName: "DEV"));
   runApp(const MyApp());
@@ -32,5 +32,17 @@ initializeAppData() async {
 
   await UserPreference.setUserData(userModel);
   userValue = await UserPreference.getUserPrefs();
+}
 
+onCheckSystemTheme() async {
+  Brightness brightness = Brightness.light;
+  if (brightness == Brightness.dark) {
+    await UserPreference.setBrightnessInSharedPrefs(false);
+    isLightMode = await UserPreference.getBrightnessFromSharedPrefs();
+    print("dark mode true $isLightMode");
+  } else if (brightness == Brightness.light) {
+    await UserPreference.setBrightnessInSharedPrefs(true);
+    isLightMode = await UserPreference.getBrightnessFromSharedPrefs();
+    print('The system is using light mode. $isLightMode');
+  }
 }
