@@ -5,8 +5,10 @@ import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
+import 'package:ui_practice/util/helper.dart';
 import 'package:ui_practice/util/ui_helper.dart';
 import 'package:ui_practice/view/home/widget/usability_widget.dart';
+import 'package:ui_practice/view/passcode/pin_passcode.dart';
 import 'package:ui_practice/view/transfer_page/transfer_page.dart';
 
 class AccountSummary extends StatelessWidget {
@@ -26,15 +28,30 @@ class AccountSummary extends StatelessWidget {
           isLightMode: isLightMode,
           onFavorite: () {},
           onNavAccount: () {},
-          onNavCard: () {},
+          onNavCard: () {
+            // showGeneralDialog(
+            //   context: context,
+            //   barrierColor: AppColor.darkPrimary,
+            //   barrierDismissible: false,
+            //   barrierLabel: 'Dialog',
+            //   transitionDuration: Duration(milliseconds: 400),
+            //   pageBuilder: (_, __, ___) {
+            //     return PinPasscodePage(navPage: ,);
+            //   },
+            // );
+            // showModalBottomSheet(
+            //   isDismissible: false,
+            //   context: context,
+            //   builder: (context) {
+            //     return const PinPasscodePage();
+            //   },
+            // );
+          },
           onNavPayment: () {},
           onScanQR: () {},
           onSendTransaction: () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) {
-                return const TransferPage();
-              },
-            ));
+            AppHelper.onShowPinPasscode(
+                context: context, navPage: const TransferPage());
           },
         ),
       ],

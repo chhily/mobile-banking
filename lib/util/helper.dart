@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ui_practice/constant/app_color.dart';
+import 'package:ui_practice/view/passcode/pin_passcode.dart';
 
 bool isLightMode = true;
 
@@ -15,5 +16,20 @@ class AppHelper {
     } else {
       return [AppColor.darkPrimary, AppColor.darkSecondary];
     }
+  }
+
+  static void onShowPinPasscode(
+      {required BuildContext context, required Widget navPage}) {
+    showGeneralDialog(
+      context: context,
+      barrierColor: AppColor.darkPrimary,
+      barrierDismissible: false,
+      transitionDuration: const Duration(milliseconds: 400),
+      pageBuilder: (_, __, ___) {
+        return PinPasscodePage(
+          navPage: navPage,
+        );
+      },
+    );
   }
 }

@@ -17,6 +17,7 @@ dependencies:
   intl: ^0.18.1
   cached_network_image: ^3.2.3
   shared_preferences: ^2.2.0
+  passcode_screen: ^2.0.1
 
 
 flutter_native_splash:
