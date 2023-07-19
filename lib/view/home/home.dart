@@ -8,6 +8,8 @@ import 'package:ui_practice/util/helper.dart';
 import 'package:ui_practice/util/ui_helper.dart';
 import 'package:ui_practice/view/home/widget/summary_account.dart';
 import 'package:ui_practice/view/home/widget/transaction_widget.dart';
+import 'package:ui_practice/view/profile/profile_page.dart';
+import 'package:ui_practice/view/qr_code/qr_code.dart';
 
 class MyAppHomePage extends StatefulWidget {
   const MyAppHomePage({super.key});
@@ -32,17 +34,36 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            VerticalSpace.regularSpace,
-            const SafeArea(
+            SafeArea(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 14.0),
+                padding: const EdgeInsets.symmetric(horizontal: 14.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     HorizontalSpace.bigSpace,
-                    Icon(CupertinoIcons.bell, color: Colors.white),
-                    HorizontalSpace.bigSpace,
-                    Icon(CupertinoIcons.qrcode, color: Colors.white),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      visualDensity: VisualDensity.comfortable,
+                      onPressed: () {},
+                      icon:
+                          const Icon(CupertinoIcons.bell, color: Colors.white),
+                    ),
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      visualDensity: VisualDensity.comfortable,
+                      onPressed: () {
+                        showGeneralDialog(
+                          context: context,
+                          barrierColor: Colors.black87,
+                          pageBuilder:
+                              (context, animation, secondaryAnimation) {
+                            return QrCodePage();
+                          },
+                        );
+                      },
+                      icon: const Icon(CupertinoIcons.qrcode,
+                          color: Colors.white),
+                    ),
                   ],
                 ),
               ),
@@ -66,48 +87,56 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
   }
 
   Widget _buildUserProfile() {
-    return Row(
-      children: [
-        UIHelper.imageAvatarHelper(userValue?.userProfile ?? ''),
-        HorizontalSpace.regularSpace,
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              UIHelper.textHelper(
-                  text: userValue?.userName ?? '',
-                  fontWeight: FontWeight.bold,
-                  textSize: FontSize.fontSizeBigRegular,
-                  textColor: AppColor.white),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  UIHelper.textHelper(
-                      text: "View Profile",
-                      textSize: FontSize.fontSizeMedium,
-                      textColor: AppColor.white),
-                  const Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    size: 10,
-                    color: AppColor.white,
-                  )
-                ],
-              ),
-            ],
+    return GestureDetector(
+      onTap: () {
+        AppHelper.onShowPinPasscode(
+            context: context, navPage: const ProfileInfoPage());
+      },
+      child: Row(
+        children: [
+          UIHelper.imageAvatarHelper(userValue?.userProfile ?? ''),
+          HorizontalSpace.regularSpace,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                UIHelper.textHelper(
+                    text: userValue?.userName ?? '',
+                    fontWeight: FontWeight.bold,
+                    textSize: FontSize.fontSizeBigRegular,
+                    textColor: AppColor.white),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    UIHelper.textHelper(
+                        text: "View Profile",
+                        textSize: FontSize.fontSizeMedium,
+                        textColor: AppColor.white),
+                    const Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      size: 10,
+                      color: AppColor.white,
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-        IconButton(
-            onPressed: () {
-              isLightMode = !isLightMode;
-              setState(() {});
-            },
-            icon: Icon(
-              isLightMode ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
-              color: AppColor.accentYellow,
-            )),
-      ],
+          IconButton(
+              onPressed: () {
+                isLightMode = !isLightMode;
+                setState(() {});
+              },
+              icon: Icon(
+                isLightMode
+                    ? Icons.light_mode_rounded
+                    : Icons.dark_mode_rounded,
+                color: AppColor.accentYellow,
+              )),
+        ],
+      ),
     );
   }
 

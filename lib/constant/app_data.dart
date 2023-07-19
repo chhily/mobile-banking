@@ -109,7 +109,7 @@ class AppData {
     'bank_account': "Chhily Lim",
     'username': "Chhily Lim",
     'user_profile':
-        "https://i.pinimg.com/564x/e1/00/e2/e100e2f12c58d22a35222f136da20739.jpg",
+        "https://i.pinimg.com/564x/02/d8/83/02d8832ff1d4f84656b81ad224a38ae3.jpg",
   };
 
   static List<Map<String, dynamic>> transactions = [

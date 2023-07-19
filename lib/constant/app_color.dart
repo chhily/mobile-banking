@@ -71,6 +71,7 @@ class AppTheme {
       //   );
       // },
     ),
+    cardTheme: const CardTheme(color: AppColor.lightSecondary),
     navigationBarTheme: NavigationBarThemeData(
         backgroundColor: AppColor.white,
         iconTheme: MaterialStateProperty.resolveWith((states) {

@@ -60,7 +60,9 @@ class _PinPasscodePageState extends State<PinPasscodePage> {
             Navigator.pop(context);
           },
           icon: UIHelper.textHelper(
-              text: "Cancel", textSize: FontSize.fontSizeBigRegular),
+              text: "Cancel",
+              textSize: FontSize.fontSizeBigRegular,
+              textColor: AppColor.white),
         ),
       ),
       body: PasscodeScreen(

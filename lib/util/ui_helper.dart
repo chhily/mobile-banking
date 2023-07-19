@@ -113,10 +113,10 @@ class UIHelper {
     );
   }
 
-  static Widget verticalDivider() {
+  static Widget verticalDivider({double? height}) {
     return Container(
-      width: 2,
-      height: 40,
+      width: 1,
+      height: height ?? 40,
       color: Colors.white,
     );
   }
@@ -218,8 +218,8 @@ class UIHelper {
       {double? width, double? height}) {
     return CachedNetworkImage(
       imageUrl: imageUrl,
-      width: 50,
-      height: 50,
+      width: width ?? 50,
+      height: height ?? 50,
       imageBuilder: (context, imageProvider) {
         return CircleAvatar(
           backgroundColor: AppColor.backgroundInfo,

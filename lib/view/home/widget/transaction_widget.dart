@@ -10,7 +10,7 @@ class TransactionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ListView.separated(
+    return ListView.separated(
       separatorBuilder: (context, index) => Divider(
           thickness: 1, color: AppColor.lightSecondary.withOpacity(0.1)),
       shrinkWrap: true,
@@ -22,17 +22,16 @@ class TransactionWidget extends StatelessWidget {
         return InkWell(
           onTap: () {},
           child: Padding(
-            padding:
-            const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     CircleAvatar(
-                      backgroundColor: AppColor.transactionColor(
-                          transactionData['category'])
-                          .withOpacity(0.1),
+                      backgroundColor:
+                          AppColor.transactionColor(transactionData['category'])
+                              .withOpacity(0.5),
                       child: Icon(transactionData['icon'],
                           color: AppColor.transactionColor(
                               transactionData['category'])),
@@ -40,6 +39,7 @@ class TransactionWidget extends StatelessWidget {
                     HorizontalSpace.regularSpace,
                     UIHelper.textHelper(
                       text: transactionData['category'],
+                      textColor: AppColor.white,
                     ),
                   ],
                 ),
@@ -54,9 +54,14 @@ class TransactionWidget extends StatelessWidget {
                         textColor: AppColor.transactionColor(
                             transactionData['category']),
                         currencySymbol: transactionData['currency'],
+                        fontWeight: FontWeight.bold,
                         textSize: FontSize.fontSizeBigRegular),
                     HorizontalSpace.smallSpace,
-                    const Icon(Icons.arrow_forward_ios, size: 12)
+                    const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 12,
+                      color: AppColor.white,
+                    )
                   ],
                 )
               ],
