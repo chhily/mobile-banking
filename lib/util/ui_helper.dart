@@ -101,23 +101,25 @@ class UIHelper {
             textSize: textSize ?? FontSize.fontSizeBigRegular));
   }
 
-  static Widget cardHelper({Color? color, Widget? childWidget}) {
+  static Widget cardHelper(
+      {Color? color, Widget? childWidget, ShapeBorder? shape}) {
     return Card(
       elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: AppBorderRadius.circularBorderRadius,
-      ),
+      shape: shape ??
+          RoundedRectangleBorder(
+            borderRadius: AppBorderRadius.circularBorderRadius,
+          ),
       color: color,
       margin: EdgeInsets.zero,
       child: childWidget ?? const Placeholder(),
     );
   }
 
-  static Widget verticalDivider({double? height}) {
+  static Widget verticalDivider({double? height, Color? color}) {
     return Container(
       width: 1,
       height: height ?? 40,
-      color: Colors.white,
+      color: color ?? Colors.white,
     );
   }
 
@@ -299,6 +301,27 @@ class UIHelper {
           child: child,
         );
       },
+    );
+  }
+
+  static snackBarHelper({required BuildContext context, String? snackMessage}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColor.lightPrimaryColor,
+        content: Row(
+          children: [
+            textHelper(
+              text: snackMessage ?? "Yay!",
+              textColor: AppColor.white,
+            ),
+            HorizontalSpace.regularSpace,
+            const Icon(
+              CupertinoIcons.info_circle,
+              color: AppColor.white,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

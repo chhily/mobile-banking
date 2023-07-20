@@ -37,16 +37,29 @@ class _MyAppHomePageState extends State<MyAppHomePage>
   }
 
   @override
-  void didChangePlatformBrightness() {
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
     final systemBrightness = MediaQuery.of(context).platformBrightness;
     if (!mounted) return;
     if (systemBrightness.name == "dark") {
-      appStateNotifier.onChangeValue(true);
-    } else {
       appStateNotifier.onChangeValue(false);
+    } else {
+      appStateNotifier.onChangeValue(true);
     }
-    super.didChangePlatformBrightness();
+    super.didChangeDependencies();
   }
+
+  // @override
+  // void didChangePlatformBrightness() {
+  //   final systemBrightness = MediaQuery.of(context).platformBrightness;
+  //   if (!mounted) return;
+  //   if (systemBrightness.name == "dark") {
+  //     appStateNotifier.onChangeValue(true);
+  //   } else {
+  //     appStateNotifier.onChangeValue(false);
+  //   }
+  //   super.didChangePlatformBrightness();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +97,10 @@ class _MyAppHomePageState extends State<MyAppHomePage>
                           padding: EdgeInsets.zero,
                           visualDensity: VisualDensity.comfortable,
                           onPressed: () {
+                            // Navigator.of(context).push(PageRouteBuilder(
+                            //     opaque: false,
+                            //     pageBuilder: (BuildContext context, _, __) =>
+                            //         const QrCodePage()));
                             showGeneralDialog(
                               context: context,
                               barrierColor: Colors.black87,

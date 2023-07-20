@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/view/passcode/pin_passcode.dart';
@@ -31,5 +33,13 @@ class AppHelper {
         );
       },
     );
+  }
+
+  static Color randomColor() {
+    return Colors.primaries[Random().nextInt(Colors.primaries.length)];
+  }
+
+  static String assetString(String value) {
+    return "assets/images$value.JPG";
   }
 }

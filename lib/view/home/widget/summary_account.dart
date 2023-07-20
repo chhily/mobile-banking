@@ -28,7 +28,9 @@ class AccountSummary extends StatelessWidget {
           onNavAccount: () {},
           onNavCard: () {
           },
-          onNavPayment: () {},
+          onNavPayment: () {
+            UIHelper.snackBarHelper(context: context);
+          },
           onScanQR: () {},
           onSendTransaction: () {
             AppHelper.onShowPinPasscode(

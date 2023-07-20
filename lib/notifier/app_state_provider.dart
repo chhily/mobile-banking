@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_practice/model/user_model.dart';
 
 import '../util/helper.dart';
 
@@ -16,5 +17,22 @@ class AppScrollState extends ValueNotifier<bool> {
 
   void onChangeValue(bool newValue) {
     value = newValue;
+  }
+}
+
+class AppAccountSelected extends ValueNotifier<UserDefaultAccount?> {
+  AppAccountSelected(super.value);
+  num receiveAmount = 0;
+  UserDefaultAccount? receiveValue;
+  UserDefaultAccount? receiveSelectValue;
+  onInitializeData(UserDefaultAccount? userValue) {
+    value = userValue;
+    receiveValue = userValue;
+    print("value of select ${receiveValue?.userName}");
+  }
+
+  onChangeReceiveValue(UserDefaultAccount? receiveSelectValue) {
+    this.receiveSelectValue = receiveSelectValue;
+    print("selected $receiveSelectValue");
   }
 }

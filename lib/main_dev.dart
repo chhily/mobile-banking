@@ -27,6 +27,11 @@ initializeAppData() async {
         totalAmount: AppData.userDefaultAccount['amount'],
         currencyName: AppData.userDefaultAccount['currency_name'],
         currencySymbol: AppData.userDefaultAccount['symbol'],
+        userName: AppData.userDefaultAccount['username'],
+        qrCode: AppData.userDefaultAccount['qr_image'],
+        userBankAccountNumber: AppData.userDefaultAccount['bank_number'],
+        link: AppData.userDefaultAccount['link'],
+        userBankAccountName: AppData.userDefaultAccount['bank_account']
       ),
       userBankInfoList: AppData.bankAccountData);
 

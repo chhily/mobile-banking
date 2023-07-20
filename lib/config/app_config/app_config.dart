@@ -5,7 +5,6 @@ class AppBorderRadius {
   static BorderRadius circularBorderRadius = BorderRadius.circular(12);
   static BorderRadius verticalBorderRadius = const BorderRadius.vertical(
     top: Radius.circular(12),
-    bottom: Radius.circular(12),
   );
   static BorderRadius horizontalBorderRadius = const BorderRadius.horizontal(
     left: Radius.circular(12),

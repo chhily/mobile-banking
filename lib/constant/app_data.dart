@@ -1,107 +1,115 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_practice/model/user_model.dart';
+import 'package:ui_practice/util/helper.dart';
 
 class AppData {
   static Map<String, dynamic> userDefaultAccount = {
     'currency_name': "Khmer Riel",
     "symbol": "Riel",
     'amount': 43287400,
+    'username': "Chhily Lim",
+    'link': "https://pay.ababank.com/ViBqrBUCDk7QZ69J8",
+    'bank_account': "Lim Chhily",
+    'bank_number': "003 001 222",
+    'qr_image': AppHelper.assetString('qr_1'),
   };
 
-  static const listOfUserBankAccount = [
-    {
-      'bank_info': {
-        'currency_name': "Khmer Riel",
-        "symbol": "Riel",
-        'amount': 43287400,
-      },
-    },
-    {
-      'bank_info': {
-        'currency_name': "US Dollar",
-        "symbol": "USD",
-        'amount': 10000,
-      },
-    },
-    {
-      'bank_info': {
-        'currency_name': "Euro",
-        "symbol": "€",
-        'amount': 59.89,
-      },
-    },
-    {
-      'bank_info': {
-        'currency_name': "British Pound",
-        "symbol": "£",
-        'amount': 52139.89,
-      },
-    },
-    {
-      'bank_info': {
-        'currency_name': "Japanese Yen",
-        "symbol": "¥",
-        'amount': 9456831.55,
-      },
-    },
-    {
-      'bank_info': {
-        'currency_name': "Chinese Yuan",
-        "symbol": "¥",
-        'amount': 12345.55,
-      },
-    },
-    {
-      'bank_info': {
-        'currency_name': "Australian Dollar",
-        "symbol": "AUD",
-        'amount': 456,
-      },
-    },
-  ];
-
-  static List<UserBankInfo> bankAccountData = [
-    UserBankInfo(
+  static List<UserBankList> bankAccountData = [
+    UserBankList(
+      currencyName: "Khmer Riel",
+      currencySymbol: "Riel",
+      totalAmount: 43287400,
+      userName: "Lim Chhily",
+      userAccountNumber: "003 001 222",
+      dayLimited: "Unlimited",
+      accountType: "Mobile Saving",
+      userDefaultAccount: UserDefaultAccount(
+        userBankAccountName: "Lim Chhily",
+        link: "https://pay.ababank.com/ViBqrBUCDk7QZ69J8",
+        userBankAccountNumber: "003 001 222",
+        userName: "Lim Chhily",
         currencyName: "Khmer Riel",
         currencySymbol: "Riel",
         totalAmount: 43287400,
-        userName: "Lim Chhily",
-        userAccountNumber: "003 001 222",
-        dayLimited: "Unlimited",
-        accountType: "Mobile Saving"),
-    UserBankInfo(
+        qrCode: AppHelper.assetString('qr_2'),
+      ),
+    ),
+    UserBankList(
+      currencyName: "US Dollar",
+      currencySymbol: "USD",
+      totalAmount: 10000,
+      userName: "Lim Chhily",
+      dayLimited: "Unlimited",
+      accountType: "Mobile Saving",
+      userAccountNumber: "001 125 913",
+      userDefaultAccount: UserDefaultAccount(
         currencyName: "US Dollar",
         currencySymbol: "USD",
         totalAmount: 10000,
+        userBankAccountNumber: "001 125 913",
+        userBankAccountName: "Lim Chhily",
         userName: "Lim Chhily",
-        dayLimited: "Unlimited",
-        accountType: "Mobile Saving",
-        userAccountNumber: "001 125 913"),
-    UserBankInfo(
+        link: "https://pay.ababank.com/txkAc9iBzoqw8XR77",
+        qrCode: AppHelper.assetString('qr_3'),
+      ),
+    ),
+    UserBankList(
+      currencyName: "Japanese Yen",
+      currencySymbol: "¥",
+      totalAmount: 9456831.55,
+      userName: "Lim Chhily",
+      accountType: "Debits",
+      dayLimited: "500/Day",
+      userAccountNumber: "981 913 888",
+      userDefaultAccount: UserDefaultAccount(
+        link: "https://pay.ababank.com/sC9PxKFWtGYipNCn6",
+        userBankAccountName: "Lim Chhily",
+        qrCode: AppHelper.assetString('qr_1'),
+        userBankAccountNumber: "981 913 888",
         currencyName: "Japanese Yen",
         currencySymbol: "¥",
         totalAmount: 9456831.55,
         userName: "Lim Chhily",
-        accountType: "Debits",
-        dayLimited: "500/Day",
-        userAccountNumber: "981 913 888"),
-    UserBankInfo(
+      ),
+    ),
+    UserBankList(
+      currencyName: "Chinese Yuan",
+      currencySymbol: "¥",
+      totalAmount: 12345.55,
+      userName: "Lim Chhily",
+      accountType: "Credit",
+      dayLimited: "900/Day",
+      userAccountNumber: "123 456 913",
+      userDefaultAccount: UserDefaultAccount(
         currencyName: "Chinese Yuan",
         currencySymbol: "¥",
         totalAmount: 12345.55,
         userName: "Lim Chhily",
-        accountType: "Credit",
-        dayLimited: "900/Day",
-        userAccountNumber: "123 456 913"),
-    UserBankInfo(
-        currencyName: "Brazilian Real",
-        currencySymbol: "BRL",
-        totalAmount: 445.14,
-        userName: "Lim Chhily",
-        dayLimited: "Unlimited",
-        accountType: "Mobile Saving",
-        userAccountNumber: "666 123 897"),
+        userBankAccountNumber: "123 456 913",
+        link: "https://pay.ababank.com/sC9PxKFWtGYipNCn6",
+        userBankAccountName: "Lim Chhily",
+        qrCode: AppHelper.assetString('qr_1'),
+      ),
+    ),
+    UserBankList(
+      currencyName: "Brazilian Real",
+      currencySymbol: "BRL",
+      totalAmount: 445.14,
+      userName: "Lim Chhily",
+      dayLimited: "Unlimited",
+      accountType: "Mobile Saving",
+      userAccountNumber: "666 123 897",
+      userDefaultAccount: UserDefaultAccount(
+          currencyName: "Brazilian Real",
+          currencySymbol: "BRL",
+          totalAmount: 445.14,
+          userName: "Lim Chhily",
+          userBankAccountName: "Lim Chhily",
+          link: "https://pay.ababank.com/txkAc9iBzoqw8XR77",
+          userBankAccountNumber: "666 123 897",
+          qrCode: AppHelper.assetString('qr_3')),
+    ),
   ];
 
   static const Map<String, dynamic> userInfo = {
