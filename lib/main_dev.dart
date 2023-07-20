@@ -10,7 +10,7 @@ import 'package:ui_practice/util/helper.dart';
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  await onCheckSystemTheme();
+  // await onCheckSystemTheme();
   await initializeAppData();
   FlavorConfig(flavor: Flavor.dev, values: FlavorValues(appName: "DEV"));
   runApp(const MyApp());
@@ -36,6 +36,7 @@ initializeAppData() async {
 
 onCheckSystemTheme() async {
   Brightness brightness = Brightness.light;
+  print("object ${brightness}");
   if (brightness == Brightness.dark) {
     await UserPreference.setBrightnessInSharedPrefs(false);
     isLightMode = await UserPreference.getBrightnessFromSharedPrefs();

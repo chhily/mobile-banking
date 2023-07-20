@@ -4,6 +4,7 @@ import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
+import 'package:ui_practice/notifier/app_state_provider.dart';
 import 'package:ui_practice/util/helper.dart';
 import 'package:ui_practice/util/ui_helper.dart';
 import 'package:ui_practice/view/home/widget/summary_account.dart';
@@ -18,70 +19,105 @@ class MyAppHomePage extends StatefulWidget {
   State<MyAppHomePage> createState() => _MyAppHomePageState();
 }
 
-class _MyAppHomePageState extends State<MyAppHomePage> {
+class _MyAppHomePageState extends State<MyAppHomePage>
+    with WidgetsBindingObserver {
+  AppStateNotifier appStateNotifier = AppStateNotifier(false);
+  bool isVisible = true;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    final systemBrightness = MediaQuery.of(context).platformBrightness;
+    if (!mounted) return;
+    if (systemBrightness.name == "dark") {
+      appStateNotifier.onChangeValue(true);
+    } else {
+      appStateNotifier.onChangeValue(false);
+    }
+    super.didChangePlatformBrightness();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: AppHelper.onChangeTheme(isLightMode: isLightMode),
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          ),
-        ),
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    HorizontalSpace.bigSpace,
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      visualDensity: VisualDensity.comfortable,
-                      onPressed: () {},
-                      icon:
-                          const Icon(CupertinoIcons.bell, color: Colors.white),
-                    ),
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      visualDensity: VisualDensity.comfortable,
-                      onPressed: () {
-                        showGeneralDialog(
-                          context: context,
-                          barrierColor: Colors.black87,
-                          pageBuilder:
-                              (context, animation, secondaryAnimation) {
-                            return QrCodePage();
+      body: ValueListenableBuilder<bool>(
+        valueListenable: appStateNotifier,
+        builder: (context, bool valueNotifier, child) {
+          return Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: AppHelper.onChangeTheme(isLightMode: valueNotifier),
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+              ),
+            ),
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        HorizontalSpace.bigSpace,
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          visualDensity: VisualDensity.comfortable,
+                          onPressed: () {},
+                          icon: const Icon(CupertinoIcons.bell,
+                              color: Colors.white),
+                        ),
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          visualDensity: VisualDensity.comfortable,
+                          onPressed: () {
+                            showGeneralDialog(
+                              context: context,
+                              barrierColor: Colors.black87,
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) {
+                                return const QrCodePage();
+                              },
+                            );
                           },
-                        );
-                      },
-                      icon: const Icon(CupertinoIcons.qrcode,
-                          color: Colors.white),
+                          icon: const Icon(CupertinoIcons.qrcode,
+                              color: Colors.white),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: ListView(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    children: [
+                      AnimatedSwitcher(
+                          duration: const Duration(seconds: 2),
+                          child: _buildUserProfile()),
+                      VerticalSpace.regularSpace,
+                      AccountSummary(isLightMode: isLightMode),
+                      _transactionWidget(),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: ListView(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 14),
-                children: [
-                  _buildUserProfile(),
-                  VerticalSpace.regularSpace,
-                  AccountSummary(isLightMode: isLightMode),
-                  _transactionWidget(),
-                ],
-              ),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -124,64 +160,8 @@ class _MyAppHomePageState extends State<MyAppHomePage> {
               ],
             ),
           ),
-          IconButton(
-              onPressed: () {
-                isLightMode = !isLightMode;
-                setState(() {});
-              },
-              icon: Icon(
-                isLightMode
-                    ? Icons.light_mode_rounded
-                    : Icons.dark_mode_rounded,
-                color: AppColor.accentYellow,
-              )),
         ],
       ),
-    );
-  }
-
-  Widget _headerWidget() {
-    return Row(
-      children: [
-        Expanded(
-          child: Row(
-            children: [
-              UIHelper.imageAvatarHelper(userValue?.userProfile ?? ''),
-              HorizontalSpace.regularSpace,
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  UIHelper.textHelper(
-                      text: userValue?.userName ?? '',
-                      fontWeight: FontWeight.bold,
-                      textSize: FontSize.fontSizeBigRegular,
-                      textColor: AppColor.white),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      UIHelper.textHelper(
-                          text: "View Profile",
-                          textSize: FontSize.fontSizeMedium,
-                          textColor: AppColor.white),
-                      const Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        size: 10,
-                        color: AppColor.white,
-                      )
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-        HorizontalSpace.bigSpace,
-        const Icon(CupertinoIcons.bell, color: Colors.white),
-        HorizontalSpace.bigSpace,
-        const Icon(CupertinoIcons.qrcode, color: Colors.white),
-      ],
     );
   }
 
