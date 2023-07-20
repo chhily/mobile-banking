@@ -12,7 +12,7 @@ class AppData {
     'link': "https://pay.ababank.com/ViBqrBUCDk7QZ69J8",
     'bank_account': "Lim Chhily",
     'bank_number': "003 001 222",
-    'qr_image': "assets/images/qr_1.JPG",
+    'qr_image': AppHelper.assetString('qr_1'),
   };
 
   static List<UserBankList> bankAccountData = [
