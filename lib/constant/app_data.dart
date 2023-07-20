@@ -12,7 +12,7 @@ class AppData {
     'link': "https://pay.ababank.com/ViBqrBUCDk7QZ69J8",
     'bank_account': "Lim Chhily",
     'bank_number': "003 001 222",
-    'qr_image': AppHelper.assetString('qr_1'),
+    'qr_image': "assets/images/qr_1.JPG",
   };
 
   static List<UserBankList> bankAccountData = [
@@ -20,6 +20,8 @@ class AppData {
       currencyName: "Khmer Riel",
       currencySymbol: "Riel",
       totalAmount: 43287400,
+      link: "https://pay.ababank.com/ViBqrBUCDk7QZ69J8",
+      qrCode: AppHelper.assetString('qr_1'),
       userName: "Lim Chhily",
       userAccountNumber: "003 001 222",
       dayLimited: "Unlimited",

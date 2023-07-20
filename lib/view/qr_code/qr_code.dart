@@ -253,9 +253,7 @@ class _QrCodePageState extends State<QrCodePage> {
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(4)),
               image: DecorationImage(
-                image: AssetImage(
-                  bankData?.qrCode ?? '',
-                ),
+                image: AssetImage("${bankData?.qrCode}"),
               ),
             ),
           ),

@@ -31,12 +31,14 @@ initializeAppData() async {
         qrCode: AppData.userDefaultAccount['qr_image'],
         userBankAccountNumber: AppData.userDefaultAccount['bank_number'],
         link: AppData.userDefaultAccount['link'],
-        userBankAccountName: AppData.userDefaultAccount['bank_account']
+        userBankAccountName: AppData.userDefaultAccount['bank_account'],
       ),
       userBankInfoList: AppData.bankAccountData);
-
+  print("qr image ${AppData.userDefaultAccount['qr_image']}");
   await UserPreference.setUserData(userModel);
   userValue = await UserPreference.getUserPrefs();
+
+  print("qr image ${userValue?.userDefaultAccount?.qrCode}");
 }
 
 onCheckSystemTheme() async {

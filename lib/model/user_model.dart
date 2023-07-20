@@ -98,7 +98,7 @@ class UserBankList {
         "account_type": accountType,
         "day_limited": dayLimited,
         "link": link,
-        "qr_image ": qrCode,
+        "qr_image": qrCode,
         'default_bank': userDefaultAccount,
       };
 }
@@ -144,6 +144,6 @@ class UserDefaultAccount {
         'bank_account': userBankAccountName,
         'bank_number': userBankAccountNumber,
         "link": link,
-        "qr_image ": qrCode
+        "qr_image": qrCode
       };
 }
