@@ -170,10 +170,15 @@ class UIHelper {
       Color? cursorColor,
       Color? textFieldColor,
       TextEditingController? textEditingController,
-      bool? autofocus}) {
+      InputDecoration? decoration,
+      bool? autofocus,
+      void Function(String)? onFieldSubmitted,
+      bool? readOnly}) {
     return TextFormField(
       controller: textEditingController,
+      onFieldSubmitted: onFieldSubmitted,
       textAlign: TextAlign.center,
+      readOnly: readOnly ?? false,
       style: GoogleFonts.quicksand(
           fontSize: FontSize.fontSizeTitle,
           fontWeight: FontWeight.bold,
@@ -187,15 +192,16 @@ class UIHelper {
       cursorColor: cursorColor ?? Colors.black,
       cursorRadius: const Radius.circular(20),
       cursorWidth: 1,
-      decoration: const InputDecoration(
-        constraints: BoxConstraints.tightFor(),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColor.lightSecondary),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColor.lightPrimaryColor),
-        ),
-      ),
+      decoration: decoration ??
+          const InputDecoration(
+            constraints: BoxConstraints.tightFor(),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColor.lightSecondary),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColor.lightPrimaryColor),
+            ),
+          ),
     );
   }
 
@@ -206,14 +212,14 @@ class UIHelper {
       double? minChildSize,
       double? maxChildSize}) {
     return GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => Navigator.of(context).pop(),
-        child: DraggableScrollableSheet(
-          initialChildSize: initialChildSize ?? 0.5,
-          minChildSize: minChildSize ?? 0.5,
-          maxChildSize: maxChildSize ?? 0.8,
-          builder: builder,
-        ));
+      behavior: HitTestBehavior.opaque,
+      onTap: () => Navigator.of(context).pop(),
+      child: SizedBox.expand(
+          child: DraggableScrollableSheet(
+        initialChildSize: initialChildSize ?? 0.5,
+        builder: builder,
+      )),
+    );
   }
 
   static Widget imageAvatarHelper(String imageUrl,

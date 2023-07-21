@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_practice/app_management/app_state_provider.dart';
 import 'package:ui_practice/config/app_config/user_preference.dart';
 import 'package:ui_practice/constant/app_color.dart';
 import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
-import 'package:ui_practice/notifier/app_state_provider.dart';
 import 'package:ui_practice/util/helper.dart';
 import 'package:ui_practice/util/ui_helper.dart';
 import 'package:ui_practice/view/home/widget/summary_account.dart';
 import 'package:ui_practice/view/home/widget/transaction_widget.dart';
 import 'package:ui_practice/view/profile/profile_page.dart';
-import 'package:ui_practice/view/qr_code/qr_code.dart';
+import 'package:ui_practice/view/qr_code/qr_code_page.dart';
 
 class MyAppHomePage extends StatefulWidget {
   const MyAppHomePage({super.key});
@@ -33,6 +33,7 @@ class _MyAppHomePageState extends State<MyAppHomePage>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    appStateNotifier.dispose();
     super.dispose();
   }
 

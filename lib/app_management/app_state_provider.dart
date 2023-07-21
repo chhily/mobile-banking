@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ui_practice/model/user_model.dart';
 
 import '../util/helper.dart';
@@ -25,6 +28,7 @@ class AppAccountSelected extends ValueNotifier<UserDefaultAccount?> {
   num receiveAmount = 0;
   UserDefaultAccount? receiveValue;
   UserDefaultAccount? receiveSelectValue;
+
   onInitializeData(UserDefaultAccount? userValue) {
     value = userValue;
     receiveValue = userValue;
@@ -36,3 +40,14 @@ class AppAccountSelected extends ValueNotifier<UserDefaultAccount?> {
     print("selected $receiveSelectValue");
   }
 }
+//
+// class AppValueSelected extends ChangeNotifier {
+//
+//   int? selected;
+//
+//   onChangeSelected(int index) {
+//     value = index;
+//     selected = index;
+//   }
+// }
+

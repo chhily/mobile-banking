@@ -40,6 +40,6 @@ class AppHelper {
   }
 
   static String assetString(String value) {
-    return "assets/images/$value.jpg";
+    return "assets/images/$value.png";
   }
 }

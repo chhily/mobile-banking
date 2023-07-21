@@ -18,6 +18,7 @@ dependencies:
   cached_network_image: ^3.2.3
   shared_preferences: ^2.2.0
   passcode_screen: ^2.0.1
+  flutter_riverpod: ^2.3.6
 
 
 flutter_native_splash:
