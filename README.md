@@ -1,4 +1,5 @@
 # About Project
+
 This is a Flutter application that uses Material 3 to create a bank application UI.
 
 ## Used Packages
@@ -10,29 +11,38 @@ This is a Flutter application that uses Material 3 to create a bank application 
 * intl: ^0.17.0
 * cached_network_image: ^3.2.0
 
-### Font 
-  * QuickSand (EngLish)
+### Font
+
+* QuickSand (EngLish)
 
 # Screenshot:
+
 ## light Mode
 
 <div style="text-align:center; width: 100%;">
-  <img src="assets/images/light_home.jpg" width="300" height="auto" align="center">
-    <img src="assets/images/light_transfer.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/light/home.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/light/transfer.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/light/profile.jpg" width="300" height="auto" align="center">
 </div>
 </br>
 <div style="text-align:center; width: 100%;">
-  <img src="assets/images/light_send.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/light/send.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/light/qr_code.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/light/select_source.jpg" width="300" height="auto" align="center">
 </div>
-
 
 ## dark mode
 
 <div style="text-align:center; width: 100%;">
-  <img src="assets/images/dark_home.jpg" width="300" height="auto" align="center">
-    <img src="assets/images/dark_transfer.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/home.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/transfer.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/profile.jpg" width="300" height="auto" align="center">
 </div>
 </br>
 <div style="text-align:center; width: 100%;">
-  <img src="assets/images/dark_send.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/send.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/select_account.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/qr_code.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/select_source.jpg" width="300" height="auto" align="center">
+    <img src="assets/images/dark/send_success.jpg" width="300" height="auto" align="center">
 </div>

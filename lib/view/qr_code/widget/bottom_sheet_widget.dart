@@ -16,7 +16,8 @@ class SourceAccountBottomSheet extends StatelessWidget {
   const SourceAccountBottomSheet({
     super.key,
     required this.onTap,
-    required this.scrollController, required this.selectedProvider,
+    required this.scrollController,
+    required this.selectedProvider,
   });
 
   @override
@@ -47,6 +48,7 @@ class SourceAccountBottomSheet extends StatelessWidget {
           UIHelper.textHelper(
               text: "Select source account:",
               fontWeight: FontWeight.bold,
+              textColor: AppColor.white,
               textSize: FontSize.fontSizeBigRegular),
           VerticalSpace.smallSpace,
           // SelectedOption(widget.scrollController, widget.onTap)
@@ -70,7 +72,9 @@ class SourceAccountBottomSheet extends StatelessWidget {
             final itemValue = userValue?.userBankInfoList?.elementAt(index);
             final bankData = itemValue?.userDefaultAccount;
             return UIHelper.cardHelper(
-              color: AppColor.backgroundPrimary.withOpacity(0.2),
+              color: isLightMode
+                  ? AppColor.darkPrimary.withOpacity(0.2)
+                  : AppColor.backgroundPrimary.withOpacity(0.2),
               childWidget: InkWell(
                 onTap: () {
                   onTap!(bankData);
@@ -94,13 +98,16 @@ class SourceAccountBottomSheet extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          UIHelper.textHelper(text: "${bankData?.accountType}"),
+                          UIHelper.textHelper(
+                              text: "${bankData?.accountType}",
+                              textColor: AppColor.white),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               UIHelper.textHelper(
-                                  text: "${bankData?.userBankAccountNumber}"),
+                                  text: "${bankData?.userBankAccountNumber}",
+                                  textColor: AppColor.white),
                               HorizontalSpace.smallSpace,
                               UIHelper.verticalDivider(
                                   height: 10,
@@ -109,7 +116,9 @@ class SourceAccountBottomSheet extends StatelessWidget {
                               UIHelper.textHelper(
                                   text: "${bankData?.currencySymbol}",
                                   textSize: FontSize.fontSizeMedium,
-                                  textColor: AppColor.lightPrimaryColor,
+                                  textColor: isLightMode
+                                      ? AppColor.white
+                                      : AppColor.lightPrimaryColor,
                                   fontWeight: FontWeight.bold),
                             ],
                           )
@@ -118,8 +127,12 @@ class SourceAccountBottomSheet extends StatelessWidget {
                     ),
                     const Spacer(),
                     currentSelected == index
-                        ? const Icon(Icons.radio_button_checked_rounded)
-                        : const Icon(Icons.radio_button_off_outlined),
+                        ? Icon(
+                            Icons.radio_button_checked_rounded,
+                            color: isLightMode ? AppColor.white : null,
+                          )
+                        : Icon(Icons.radio_button_off_outlined,
+                            color: isLightMode ? AppColor.white : null),
                     HorizontalSpace.regularSpace,
                   ],
                 ),
