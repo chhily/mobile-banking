@@ -351,7 +351,7 @@ class _QrCodePageState extends State<QrCodePage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      UIHelper.textHelper(text: "${itemValue?.accountType}"),
+                      UIHelper.textHelper(text: "${bankData?.accountType}"),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,

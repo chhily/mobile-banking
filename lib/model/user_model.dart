@@ -47,11 +47,11 @@ class UserModel {
 }
 
 class UserBankList {
-  String? currencyName;
-  String? currencySymbol;
-  num? totalAmount;
+  // String? currencyName;
+  // String? currencySymbol;
+  // num? totalAmount;
   String? userName;
-  String? accountType;
+  // String? accountType;
   String? userAccountNumber;
   String? dayLimited;
   String? qrCode;
@@ -60,11 +60,11 @@ class UserBankList {
   UserDefaultAccount? userDefaultAccount;
 
   UserBankList({
-    this.totalAmount,
-    this.currencySymbol,
-    this.currencyName,
-    this.userAccountNumber,
-    this.accountType,
+    // this.totalAmount,
+    // this.currencySymbol,
+    // this.currencyName,
+    // this.userAccountNumber,
+    // this.accountType,
     this.userName,
     this.dayLimited,
     this.qrCode,
@@ -74,11 +74,11 @@ class UserBankList {
 
   factory UserBankList.fromJson(Map<String, dynamic> json) {
     return UserBankList(
-      currencyName: json['currency_name'],
-      currencySymbol: json['symbol'],
-      totalAmount: json['amount'],
-      accountType: json['account_type'],
-      userAccountNumber: json['bank_number'],
+      // currencyName: json['currency_name'],
+      // currencySymbol: json['symbol'],
+      // totalAmount: json['amount'],
+      // accountType: json['account_type'],
+      // userAccountNumber: json['bank_number'],
       userName: json['username'],
       dayLimited: json['day_limited'],
       qrCode: json['qr_image'],
@@ -90,12 +90,12 @@ class UserBankList {
   }
 
   Map<String, dynamic> toJson() => {
-        'amount': totalAmount,
-        'currency_name': currencyName,
-        'symbol': currencySymbol,
+        // 'amount': totalAmount,
+        // 'currency_name': currencyName,
+        // 'symbol': currencySymbol,
         "username": userName,
         "bank_number": userAccountNumber,
-        "account_type": accountType,
+        // "account_type": accountType,
         "day_limited": dayLimited,
         "link": link,
         "qr_image": qrCode,
@@ -112,6 +112,7 @@ class UserDefaultAccount {
   String? userBankAccountNumber;
   String? qrCode;
   String? link;
+  String? accountType;
 
   UserDefaultAccount({
     this.totalAmount,
@@ -122,6 +123,7 @@ class UserDefaultAccount {
     this.userName,
     this.qrCode,
     this.link,
+    this.accountType,
   });
   factory UserDefaultAccount.fromJson(Map<String, dynamic> json) {
     return UserDefaultAccount(
@@ -133,6 +135,7 @@ class UserDefaultAccount {
       userName: json['username'],
       qrCode: json['qr_image'],
       link: json['link'],
+      accountType: json['account_type'],
     );
   }
 
@@ -144,6 +147,7 @@ class UserDefaultAccount {
         'bank_account': userBankAccountName,
         'bank_number': userBankAccountNumber,
         "link": link,
-        "qr_image": qrCode
+        "qr_image": qrCode,
+        "account_type": accountType,
       };
 }

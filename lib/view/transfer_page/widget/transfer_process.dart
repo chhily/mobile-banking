@@ -204,7 +204,8 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
       shrinkWrap: true,
       itemCount: userValue?.userBankInfoList?.length ?? 0,
       itemBuilder: (context, index) {
-        final userBankAccount = userValue?.userBankInfoList?.elementAt(index);
+        final itemValue = userValue?.userBankInfoList?.elementAt(index);
+        final bankData = itemValue?.userDefaultAccount;
         return UIHelper.cardHelper(
           color: AppColor.backgroundPrimary,
           childWidget: InkWell(
@@ -218,7 +219,7 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                   CircleAvatar(
                     backgroundColor: AppColor.lightSecondary,
                     child: UIHelper.textHelper(
-                      text: userBankAccount?.userName![0] ?? "N/A",
+                      text: bankData?.userName![0] ?? "N/A",
                     ),
                   ),
                   HorizontalSpace.regularSpace,
@@ -227,11 +228,11 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       UIHelper.textHelper(
-                          text: "${userBankAccount?.userAccountNumber}",
+                          text: "${bankData?.userBankAccountNumber}",
                           fontWeight: FontWeight.bold,
                           textColor: AppColor.black),
                       UIHelper.textHelper(
-                          text: "${userBankAccount?.accountType}",
+                          text: "${bankData?.accountType}",
                           textSize: FontSize.fontSizeMedium,
                           textColor: AppColor.black),
                     ],
@@ -242,14 +243,14 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         UIHelper.currencyTextHelper(
-                            price: userBankAccount?.totalAmount ?? 0,
+                            price: bankData?.totalAmount ?? 0,
                             currencySymbol:
-                                userBankAccount?.currencySymbol ?? "N/A",
+                            bankData?.currencySymbol ?? "N/A",
                             fontWeight: FontWeight.bold,
                             iconColor: AppColor.black,
                             textColor: AppColor.black),
                         UIHelper.textHelper(
-                            text: "${userBankAccount?.dayLimited}",
+                            text: "${itemValue?.dayLimited}",
                             textSize: FontSize.fontSizeMedium,
                             textColor: AppColor.black),
                       ],
