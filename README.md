@@ -10,6 +10,7 @@ This is a Flutter application that uses Material 3 to create a bank application 
 * flutter_native_splash: ^1.3.2
 * intl: ^0.17.0
 * cached_network_image: ^3.2.0
+* flutter_riverpod: ^2.3.6
 
 ### Font
 
