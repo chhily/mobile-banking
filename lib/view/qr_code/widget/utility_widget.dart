@@ -25,7 +25,7 @@ class UtilityWidget extends StatelessWidget {
             title: "Screenshot"),
         _buildIcon(
             onPressed: () {
-              UIHelper.snackBarHelper(context: context);
+              UIHelper.snackBarHelper(context: context, snackMessage: "Copies !!");
               Clipboard.setData(ClipboardData(text: "${bankData?.link}"));
               // Navigator.pop(context);
             },

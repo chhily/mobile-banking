@@ -316,15 +316,15 @@ class UIHelper {
         backgroundColor: AppColor.lightPrimaryColor,
         content: Row(
           children: [
+            const Icon(
+              CupertinoIcons.info_circle,
+              color: AppColor.white,
+            ),
+            HorizontalSpace.regularSpace,
             textHelper(
               text: snackMessage ?? "Yay!",
               textColor: AppColor.white,
             ),
-            HorizontalSpace.regularSpace,
-            const Icon(
-              CupertinoIcons.info_circle,
-              color: AppColor.white,
-            )
           ],
         ),
       ),

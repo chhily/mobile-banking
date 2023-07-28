@@ -6,6 +6,7 @@ import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/util/helper.dart';
 import 'package:ui_practice/util/ui_helper.dart';
+import 'package:ui_practice/view/card/card_page.dart';
 import 'package:ui_practice/view/home/widget/usability_widget.dart';
 import 'package:ui_practice/view/transfer_page/transfer_page.dart';
 
@@ -27,9 +28,11 @@ class AccountSummary extends StatelessWidget {
           onFavorite: () {},
           onNavAccount: () {},
           onNavCard: () {
+            AppHelper.onShowPinPasscode(
+                context: context, navPage: const CardPage());
           },
           onNavPayment: () {
-            UIHelper.snackBarHelper(context: context);
+            // UIHelper.snackBarHelper(context: context);
           },
           onScanQR: () {},
           onSendTransaction: () {

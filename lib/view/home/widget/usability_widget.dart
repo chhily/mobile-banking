@@ -31,18 +31,21 @@ class UsabilityWidget extends StatelessWidget {
       color: isLightMode
           ? AppColor.lightPrimaryColor
           : AppColor.darkPrimary.withOpacity(0.5),
-      childWidget: Padding(
+      childWidget: Container(
+        height: MediaQuery.of(context).size.height * 0.25,
         padding: const EdgeInsets.all(8.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _upperRow(
+                context: context,
                 onNavAccount: onNavAccount,
                 onNavCard: onNavCard,
                 onNavPayment: onNavPayment),
-            VerticalSpace.regularSpace,
+            VerticalSpace.mediumSpace,
             _downRow(
+                context: context,
                 onSendTransaction: onSendTransaction,
                 onFavorite: onFavorite,
                 onScanQR: onScanQR),
@@ -55,6 +58,7 @@ class UsabilityWidget extends StatelessWidget {
   Widget _upperRow(
       {void Function()? onNavAccount,
       void Function()? onNavCard,
+      required BuildContext context,
       void Function()? onNavPayment}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -63,16 +67,19 @@ class UsabilityWidget extends StatelessWidget {
             icon: Icons.account_balance_wallet_rounded,
             iconColor: AppColor.white,
             onTap: onNavAccount,
+            context: context,
             text: "Accounts"),
         _cardWidget(
             icon: CupertinoIcons.creditcard_fill,
             iconColor: AppColor.white,
             onTap: onNavCard,
+            context: context,
             text: "Cards"),
         _cardWidget(
             icon: Icons.monetization_on_rounded,
             iconColor: AppColor.white,
             onTap: onNavPayment,
+            context: context,
             text: "Payments"),
       ],
     );
@@ -81,7 +88,8 @@ class UsabilityWidget extends StatelessWidget {
   Widget _downRow(
       {void Function()? onSendTransaction,
       void Function()? onScanQR,
-      void Function()? onFavorite}) {
+      void Function()? onFavorite,
+      required BuildContext context}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -89,16 +97,19 @@ class UsabilityWidget extends StatelessWidget {
             icon: CupertinoIcons.qrcode_viewfinder,
             iconColor: AppColor.white,
             onTap: onScanQR,
+            context: context,
             text: "Scan"),
         _cardWidget(
             icon: CupertinoIcons.square_favorites_alt_fill,
             iconColor: AppColor.white,
             onTap: onFavorite,
+            context: context,
             text: "Favorites"),
         _cardWidget(
             icon: CupertinoIcons.arrow_right_arrow_left_square_fill,
             iconColor: AppColor.white,
             onTap: onSendTransaction,
+            context: context,
             text: "Transfers"),
       ],
     );
@@ -108,7 +119,8 @@ class UsabilityWidget extends StatelessWidget {
       {required IconData icon,
       required Color iconColor,
       void Function()? onTap,
-      required String text}) {
+      required String text,
+      required BuildContext context}) {
     return UIHelper.cardHelper(
       color: isLightMode ? AppColor.midNightBlue : AppColor.darkPrimary,
       childWidget: Material(
@@ -119,8 +131,8 @@ class UsabilityWidget extends StatelessWidget {
           onTap: onTap,
           borderRadius: AppBorderRadius.circularBorderRadius,
           child: Container(
-            width: 100,
-            height: 80,
+            width: MediaQuery.of(context).size.width * 0.28,
+            height: MediaQuery.of(context).size.height * 0.11,
             padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

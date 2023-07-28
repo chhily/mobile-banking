@@ -254,20 +254,4 @@ class _QrCodePageState extends State<QrCodePage> {
     );
   }
 
-  // void inputNumber(int value) {
-  //   amountTC.text += value.toString();
-  // }
-  //
-  // void clearLastInput() {
-  //   if (amountTC.text.isNotEmpty) {
-  //     amountTC.text = amountTC.text.substring(
-  //       0,
-  //       amountTC.text.length - 1,
-  //     );
-  //   }
-  // }
-  //
-  // void clearAll() {
-  //   amountTC.clear();
-  // }
 }

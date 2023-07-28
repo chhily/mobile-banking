@@ -237,25 +237,11 @@ class _TransferProcessPageState extends State<TransferProcessPage> {
                           textColor: AppColor.black),
                     ],
                   ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        UIHelper.currencyTextHelper(
-                            price: bankData?.totalAmount ?? 0,
-                            currencySymbol:
-                            bankData?.currencySymbol ?? "N/A",
-                            fontWeight: FontWeight.bold,
-                            iconColor: AppColor.black,
-                            textColor: AppColor.black),
-                        UIHelper.textHelper(
-                            text: "${itemValue?.dayLimited}",
-                            textSize: FontSize.fontSizeMedium,
-                            textColor: AppColor.black),
-                      ],
-                    ),
-                  ),
+                  const Spacer(),
+                  UIHelper.textHelper(
+                      text: "${itemValue?.dayLimited}",
+                      textSize: FontSize.fontSizeMedium,
+                      textColor: AppColor.black),
                 ],
               ),
             ),
