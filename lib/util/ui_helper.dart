@@ -172,18 +172,20 @@ class UIHelper {
       TextEditingController? textEditingController,
       InputDecoration? decoration,
       bool? autofocus,
+      TextAlign? textAlign,
+      TextInputType? keyboardType,
       void Function(String)? onFieldSubmitted,
       bool? readOnly}) {
     return TextFormField(
       controller: textEditingController,
       onFieldSubmitted: onFieldSubmitted,
-      textAlign: TextAlign.center,
+      textAlign: textAlign ?? TextAlign.center,
       readOnly: readOnly ?? false,
       style: GoogleFonts.quicksand(
           fontSize: FontSize.fontSizeTitle,
           fontWeight: FontWeight.bold,
           color: textFieldColor),
-      keyboardType: TextInputType.number,
+      keyboardType: keyboardType ?? TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.deny(RegExp(r'[/\\]')),
       ],
@@ -328,6 +330,19 @@ class UIHelper {
           ],
         ),
       ),
+    );
+  }
+
+  static TextStyle appTextStyle({
+    double? textSize,
+    FontWeight? fontWeight,
+    Color? textColor,
+  }) {
+    return GoogleFonts.quicksand(
+      height: 0,
+      fontSize: textSize ?? FontSize.fontSizeRegular,
+      fontWeight: fontWeight ?? FontWeight.normal,
+      color: textColor,
     );
   }
 }

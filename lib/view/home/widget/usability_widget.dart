@@ -31,19 +31,17 @@ class UsabilityWidget extends StatelessWidget {
       color: isLightMode
           ? AppColor.lightPrimaryColor
           : AppColor.darkPrimary.withOpacity(0.5),
-      childWidget: Container(
-        height: MediaQuery.of(context).size.height * 0.25,
-        padding: const EdgeInsets.all(8.0),
+      childWidget: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.3,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _upperRow(
                 context: context,
                 onNavAccount: onNavAccount,
                 onNavCard: onNavCard,
                 onNavPayment: onNavPayment),
-            VerticalSpace.mediumSpace,
             _downRow(
                 context: context,
                 onSendTransaction: onSendTransaction,
@@ -61,7 +59,8 @@ class UsabilityWidget extends StatelessWidget {
       required BuildContext context,
       void Function()? onNavPayment}) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _cardWidget(
             icon: Icons.account_balance_wallet_rounded,
@@ -91,7 +90,8 @@ class UsabilityWidget extends StatelessWidget {
       void Function()? onFavorite,
       required BuildContext context}) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _cardWidget(
             icon: CupertinoIcons.qrcode_viewfinder,
@@ -121,19 +121,18 @@ class UsabilityWidget extends StatelessWidget {
       void Function()? onTap,
       required String text,
       required BuildContext context}) {
-    return UIHelper.cardHelper(
-      color: isLightMode ? AppColor.midNightBlue : AppColor.darkPrimary,
-      childWidget: Material(
-        color: Colors.transparent,
-        child: InkWell(
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: UIHelper.cardHelper(
+        color: isLightMode ? AppColor.midNightBlue : AppColor.darkPrimary,
+        childWidget: InkWell(
           splashFactory: InkSparkle.splashFactory,
           splashColor: AppColor.darkPrimary.withOpacity(0.5),
           onTap: onTap,
           borderRadius: AppBorderRadius.circularBorderRadius,
-          child: Container(
+          child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.28,
-            height: MediaQuery.of(context).size.height * 0.11,
-            padding: const EdgeInsets.all(16.0),
+            height: MediaQuery.of(context).size.height * 0.13,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

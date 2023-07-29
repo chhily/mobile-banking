@@ -1,7 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:ui_practice/model/user_card_model.dart';
 import 'package:ui_practice/model/user_model.dart';
 
 import '../util/helper.dart';
@@ -32,22 +30,23 @@ class AppAccountSelected extends ValueNotifier<UserDefaultAccount?> {
   onInitializeData(UserDefaultAccount? userValue) {
     value = userValue;
     receiveValue = userValue;
-    print("value of select ${receiveValue?.userName}");
   }
 
   onChangeReceiveValue(UserDefaultAccount? receiveSelectValue) {
     this.receiveSelectValue = receiveSelectValue;
-    print("selected $receiveSelectValue");
   }
 }
-//
-// class AppValueSelected extends ChangeNotifier {
-//
-//   int? selected;
-//
-//   onChangeSelected(int index) {
-//     value = index;
-//     selected = index;
-//   }
-// }
 
+class AppUserCardState extends ValueNotifier<UserCardModel?> {
+  AppUserCardState(super.value);
+
+  final List<UserCardModel> _userCard = [];
+
+  List<UserCardModel> get userCard => _userCard;
+
+  onAddNewCard(UserCardModel? cardValue) {
+    if (cardValue == null) return;
+    value = cardValue;
+    _userCard.add(cardValue);
+  }
+}

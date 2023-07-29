@@ -251,4 +251,6 @@ class AppData {
       'receiver_bank': "077 500 743",
     }
   ];
+
+  static List<String> cardType = ["Credit", "Master", "Debits", "Visa"];
 }

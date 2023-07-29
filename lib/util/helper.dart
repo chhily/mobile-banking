@@ -42,4 +42,33 @@ class AppHelper {
   static String assetString(String value) {
     return "assets/images/$value.png";
   }
+
+  static String generateRandomNumber() {
+    Random random = Random();
+
+    String number = "";
+    String firstNum = "";
+    String lastNum = "";
+
+    String randomDigit = "";
+
+    for (int i = 0; i < 1; i++) {
+      randomDigit += "${random.nextInt(9)}";
+    }
+    for (int i = 0; i < 3; i++) {
+      firstNum += "${random.nextInt(9)}";
+    }
+
+    for (int i = 0; i < 3; i++) {
+      lastNum += "${random.nextInt(9)}";
+    }
+
+    for (int i = 0; i < 3; i++) {
+      number += "${random.nextInt(9)}";
+    }
+
+    number = "$firstNum $number $lastNum xx$randomDigit";
+
+    return number;
+  }
 }
