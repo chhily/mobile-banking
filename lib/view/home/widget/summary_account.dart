@@ -6,8 +6,10 @@ import 'package:ui_practice/constant/app_font_size.dart';
 import 'package:ui_practice/constant/app_space.dart';
 import 'package:ui_practice/util/helper.dart';
 import 'package:ui_practice/util/ui_helper.dart';
+import 'package:ui_practice/view/account/account_page.dart';
+import 'package:ui_practice/view/account/widget/account_chart.dart';
 import 'package:ui_practice/view/card/card_page.dart';
-import 'package:ui_practice/view/home/widget/usability_widget.dart';
+import 'package:ui_practice/view/home/widget/menu_widget.dart';
 import 'package:ui_practice/view/transfer_page/transfer_page.dart';
 
 class AccountSummary extends StatelessWidget {
@@ -23,10 +25,13 @@ class AccountSummary extends StatelessWidget {
       children: [
         _accountSummary(),
         VerticalSpace.hugeSpace,
-        UsabilityWidget(
+        MenuWidget(
           isLightMode: isLightMode,
           onFavorite: () {},
-          onNavAccount: () {},
+          onNavAccount: () {
+            AppHelper.onShowPinPasscode(
+                context: context, navPage: const AccountPage());
+          },
           onNavCard: () {
             AppHelper.onShowPinPasscode(
                 context: context, navPage: const CardPage());

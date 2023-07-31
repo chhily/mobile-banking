@@ -34,23 +34,17 @@ initializeAppData() async {
         userBankAccountName: AppData.userDefaultAccount['bank_account'],
       ),
       userBankInfoList: AppData.bankAccountData);
-  print("qr image ${AppData.userDefaultAccount['qr_image']}");
   await UserPreference.setUserData(userModel);
   userValue = await UserPreference.getUserPrefs();
-
-  print("qr image ${userValue?.userDefaultAccount?.qrCode}");
 }
 
 onCheckSystemTheme() async {
   Brightness brightness = Brightness.light;
-  print("object ${brightness}");
   if (brightness == Brightness.dark) {
     await UserPreference.setBrightnessInSharedPrefs(false);
     isLightMode = await UserPreference.getBrightnessFromSharedPrefs();
-    print("dark mode true $isLightMode");
   } else if (brightness == Brightness.light) {
     await UserPreference.setBrightnessInSharedPrefs(true);
     isLightMode = await UserPreference.getBrightnessFromSharedPrefs();
-    print('The system is using light mode. $isLightMode');
   }
 }

@@ -27,8 +27,8 @@ class CardTypeSelection extends StatelessWidget {
         }).toList();
       },
       underline: Container(
-        height: 1.5,
-        color: AppColor.lightPrimaryColor,
+        height: 1,
+        color: AppColor.midNightBlue,
       ),
       dropdownColor: AppColor.darkPrimary,
       onChanged: (value) {},

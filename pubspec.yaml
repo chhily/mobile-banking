@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: ^2.2.0
   passcode_screen: ^2.0.1
   flutter_riverpod: ^2.3.6
+  fl_chart: ^0.63.0
 
 
 flutter_native_splash:

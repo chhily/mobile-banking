@@ -6,7 +6,7 @@ import 'package:ui_practice/util/ui_helper.dart';
 
 import '../../../constant/app_space.dart';
 
-class UsabilityWidget extends StatelessWidget {
+class MenuWidget extends StatelessWidget {
   final void Function()? onNavAccount;
   final void Function()? onNavCard;
   final void Function()? onNavPayment;
@@ -15,7 +15,7 @@ class UsabilityWidget extends StatelessWidget {
   final void Function()? onFavorite;
   final bool isLightMode;
 
-  const UsabilityWidget(
+  const MenuWidget(
       {super.key,
       this.onNavAccount,
       this.onNavCard,

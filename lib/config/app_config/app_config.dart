@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 class AppBorderRadius {
   static BorderRadius circularBorderRadius = BorderRadius.circular(12);
+  static BorderRadius bigCircularBorderRadius = BorderRadius.circular(16);
   static BorderRadius verticalBorderRadius = const BorderRadius.vertical(
     top: Radius.circular(12),
   );

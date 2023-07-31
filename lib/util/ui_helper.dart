@@ -102,9 +102,12 @@ class UIHelper {
   }
 
   static Widget cardHelper(
-      {Color? color, Widget? childWidget, ShapeBorder? shape}) {
+      {Color? color,
+      Widget? childWidget,
+      ShapeBorder? shape,
+      double? elevation}) {
     return Card(
-      elevation: 0,
+      elevation: elevation ?? 0,
       shape: shape ??
           RoundedRectangleBorder(
             borderRadius: AppBorderRadius.circularBorderRadius,

@@ -18,15 +18,11 @@ class AppData {
 
   static List<UserBankList> bankAccountData = [
     UserBankList(
-      // currencyName: "Khmer Riel",
-      // currencySymbol: "Riel",
-      // totalAmount: 43287400,
+
       link: "https://pay.ababank.com/ViBqrBUCDk7QZ69J8",
       qrCode: AppHelper.assetString('qr_1'),
       userName: "Lim Chhily",
-      // userAccountNumber: "003 001 222",
       dayLimited: "Unlimited",
-      // accountType: "Mobile Saving",
       userDefaultAccount: UserDefaultAccount(
         userBankAccountName: "Lim Chhily",
         link: "https://pay.ababank.com/ViBqrBUCDk7QZ69J8",
@@ -40,13 +36,10 @@ class AppData {
       ),
     ),
     UserBankList(
-      // currencyName: "US Dollar",
-      // currencySymbol: "USD",
-      // totalAmount: 10000,
+
       userName: "Lim Chhily",
       dayLimited: "Unlimited",
-      // accountType: "Mobile Saving",
-      // userAccountNumber: "001 125 913",
+
       userDefaultAccount: UserDefaultAccount(
         currencyName: "US Dollar",
         currencySymbol: "USD",
@@ -60,13 +53,9 @@ class AppData {
       ),
     ),
     UserBankList(
-      // currencyName: "Japanese Yen",
-      // currencySymbol: "¥",
-      // totalAmount: 9456831.55,
+
       userName: "Lim Chhily",
-      // accountType: "Debits",
       dayLimited: "500/Day",
-      // userAccountNumber: "981 913 888",
       userDefaultAccount: UserDefaultAccount(
         link: "https://pay.ababank.com/sC9PxKFWtGYipNCn6",
         userBankAccountName: "Lim Chhily",
@@ -80,13 +69,9 @@ class AppData {
       ),
     ),
     UserBankList(
-      // currencyName: "Chinese Yuan",
-      // currencySymbol: "¥",
-      // totalAmount: 12345.55,
+
       userName: "Lim Chhily",
-      // accountType: "Credit",
       dayLimited: "900/Day",
-      // userAccountNumber: "123 456 913",
       userDefaultAccount: UserDefaultAccount(
         currencyName: "Chinese Yuan",
         currencySymbol: "¥",
@@ -100,17 +85,14 @@ class AppData {
       ),
     ),
     UserBankList(
-      // currencyName: "Brazilian Real",
-      // currencySymbol: "BRL",
-      // totalAmount: 445.14,
+
       userName: "Lim Chhily",
       dayLimited: "Unlimited",
-      // accountType: "Mobile Saving",
-      // userAccountNumber: "666 123 897",
+
       userDefaultAccount: UserDefaultAccount(
-          currencyName: "Brazilian Real",
-          currencySymbol: "BRL",
-          totalAmount: 445.14,
+          currencyName: "Khmer Riel",
+          currencySymbol: "Riel",
+          totalAmount: 4453242354.14,
           userName: "Lim Chhily",
           accountType: "Mobile Saving",
           userBankAccountName: "Lim Chhily",
